@@ -3,12 +3,42 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Where Watch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/main.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="assets/script/main.js"></script>
 </head>
 <body>
-    
+    <header>
+        <i id = "menu" class="fas fa-bars"></i>
+        <h1>Where Watch<i class="fab fa-wolf-pack-battalion"></i></h1>
+    </header>
+    <form class = "container">
+        <div class = "row">
+            <div class = "col-md-5">
+                <div class="form-group">
+                    <label for="search movies and shows">What are you looking for?</label>
+                    <input type="text" class="form-control" id="searchShows" placeholder="Search Movies and Shows">
+                </div>
+            </div>
+            <div class = "col-md-2">
+                <button class = "search" type="submit">Search</button>
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "col-md-2">
+                <button class = "shows" type="submit">Shows</button>
+            </div>
+            <div class = "col-md-2">
+                <button class = "movies" type="submit">Movies</button>
+            </div>
+            <div class = "col-md-2">
+                <button class = "favorites" type="submit">Favoirtes</button>
+            </div>
+        </div>
+    </form>
 </body>
 </html>

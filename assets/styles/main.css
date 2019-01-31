@@ -1,0 +1,31 @@
+body {
+    background-image: url(assets/images/logoTest.png) no-repeat;
+    background-color: #d0cd94;
+    color: #241623;
+}
+
+header{
+    background-color: #c7ef00;
+    text-align: center;
+    padding: 30px;
+}
+
+#menu {
+    float: left;
+}
+
+.search {
+    background-color: #d56f3e;
+    color: #d0cd94;
+    outline-color: #3c787e
+}
+
+form {
+    margin: 25px;
+}
+
+button {
+    background-color: #3c787e;
+    color: white;
+    outline-color: #241623;
+}
