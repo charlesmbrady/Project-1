@@ -40,31 +40,37 @@
 // Channels: not required
 // Person: not required
 
+//guidebox variables
 var gbApiKey="";
 var gbType ="";
 //var field= ""; optional
 var searchInput="";
-var gbQueryURL= "http://api-public.guidebox.com/v2/search?api_key="+api_key+"&type="+gbType+"&query="+searchInput;
+var gbQueryURL= "http://api-public.guidebox.com/v2/search?api_key="+gbApiKey+"&type="+gbType+"&query="+searchInput;
 
-$.ajax({url: gbQueryURL, method: "GET"})
-.then(function(response){
-    console.log(response)
-});
-
-//OMDB ajax call
-
+//omdb variables
 
 var omdbType= "";
 var year= "";
-var search ="tomb raider";
+var searchInput ="tomb raider";
 var omdbApiKey = "7cc4d503";
-var omdbQueryURL = "https://www.omdbapi.com/?s=" + search + "&type=" + omdbType + "&y=" + year + "&plot=short&apikey=" + apiKey;
+var omdbQueryURL = "https://www.omdbapi.com/?s=" + searchInput + "&type=" + omdbType + "&y=" + year + "&plot=short&apikey=" + omdbApiKey;
 
-$.ajax({
-  url: omdbqueryURL,
-  method: "GET"
-}).then(function(response) {
-  console.log(response);
-});
 
+ 
+$(".search").click(function(e){
+    e.preventDefault();
+    searchInput=$("#searchShows").val().trim();
+    //guidebox ajax call
+    $.ajax({url: gbQueryURL, method: "GET"})
+    .then(function(response){
+        console.log(response)
+    });
+    //omdb ajax call
+    $.ajax({
+        url: omdbQueryURL,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response);
+      });
+})
 
