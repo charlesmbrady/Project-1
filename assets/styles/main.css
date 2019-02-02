@@ -1,7 +1,19 @@
-body {
-    background-image: url(assets/images/logoTest.png) no-repeat;
-    background-color: #d0cd94;
-    color: #241623;
+#wolfIcon {
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/werewolfStanding.png");
+}
+
+#wolfIcon:hover {
+    opacity: .5;
+   background-image: url("../images/werewolfHowl.png");
+}
+
+#wolfIcon2 {
+    height: 100px;
 }
 
 header{
@@ -10,8 +22,20 @@ header{
     padding: 30px;
 }
 
-#menu {
-    float: left;
+.menu {
+    color: #3c787e;
+}
+
+li:hover {
+    background-color: #d56f3e;
+    color: #241623;
+}
+
+body {
+    background-image: url("../images/logoTest.png") ;
+    background-size: cover;
+    background-color: #d0cd94;
+    color: #241623;
 }
 
 .search {
@@ -22,6 +46,13 @@ header{
 
 form {
     margin: 25px;
+    padding: 20px;
+    text-align: center;
+    width: 30%;
+    border: solid 1px #d56f3e;
+    background-color: #d0cd94;
+    border-radius: 60px/40px;
+
 }
 
 button {

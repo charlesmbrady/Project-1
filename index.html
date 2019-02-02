@@ -6,39 +6,54 @@
     <title>Where Watch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/syles/foundation.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/main.css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <script src="assets/script/main.js"></script>
-</head>
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">-->
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">-->
+  </head>
 <body>
     <header>
-        <i id = "menu" class="fas fa-bars"></i>
-        <h1>Where Watch<i class="fab fa-wolf-pack-battalion"></i></h1>
+        <div class = "row">
+            <div class = "columns medium-4">
+                <ul class="menu vertical">
+                    <li><a href="#">One</a></li>
+                        <li><a href="#">Two</a></li>
+                    <li><a href="#">Three</a></li>
+                    <li><a href="#">Four</a></li>
+                </ul>
+            </div>
+            <div class = "columns medium-3 wolf">
+                <div id="wolfIcon"></div>
+                <!--<img id = "wolfIcon" src = "assets/images/werewolfStanding.png">
+                <img id = "wolfIcon2" src = "assets/images/werewolfHowl.png">-->
+            </div>
+            <div class = "columns medium-5">
+                <h1>Where Watch</h1>
+            </div>
+        </div>
     </header>
-    <form class = "container">
-        <div class = "row">
-            <div class = "col-md-5">
-                <div class="form-group">
-                    <label for="search movies and shows">What are you looking for?</label>
-                    <input type="text" class="form-control" id="searchShows" placeholder="Search Movies and Shows">
+    <form>
+        <div class="grid-container">
+          <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+              <label>What are you looking for?
+                <input type="text" id = "searchShows" placeholder="search for shows and movies">
+              </label>
+            </div>
+            <div class = "row">
+                   <div class = "medium-4 columns">
+                        <button class = "shows" type="submit">Shows</button>
+                    </div>
+                    <div class = "medium-4 columns">
+                        <button class = "movies" type="submit">Movies</button>
+                    </div>
+                    <div class = "medium-4 columns">
+                        <button class = "favorites" type="submit">Favoirtes</button>
+                    </div>
                 </div>
-            </div>
-            <div class = "col-md-2">
-                <button class = "search" type="submit">Search</button>
-            </div>
+          </div>
         </div>
-        <div class = "row">
-            <div class = "col-md-2">
-                <button class = "shows" type="submit">Shows</button>
-            </div>
-            <div class = "col-md-2">
-                <button class = "movies" type="submit">Movies</button>
-            </div>
-            <div class = "col-md-2">
-                <button class = "favorites" type="submit">Favoirtes</button>
-            </div>
-        </div>
-    </form>
+      </form>
+<script src="assets/script/main.js"></script>
 </body>
 </html>
