@@ -45,3 +45,16 @@ var omdbQueryURL = "https://www.omdbapi.com/?s=" + searchInput + "&type=" + omdb
       });
 //})
 
+
+  //trakt ajax call
+  $.ajax({ 
+    url: "https://cors-anywhere.herokuapp.com/https://api.trakt.tv/calendars/all/movies/2014-09-01/7", 
+    headers: {
+      "Content-type": "application/json",
+      "trakt-api-key": "c012ee729c5660df87999860a3b52eaaf0ecd5d6e6c535f76341feafa05eb28d",
+      "trakt-api-version": "2"
+    },
+    method: "GET"})
+  .then(function(response){
+      console.log(response)
+  });
