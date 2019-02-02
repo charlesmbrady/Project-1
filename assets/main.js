@@ -35,6 +35,15 @@ var omdbQueryURL = "https://www.omdbapi.com/?s=" + searchInput + "&type=" + omdb
       method:"GET"
     }).then(function(response){
       console.log(response)
+      var results= response.results;
+      for (var i=0; i<results.length; i++){
+        var locations= results[i].locations;
+        for(var x=0; x<locations.length; x++){
+          console.log(results[i].name);
+          console.log(results[i].locations[x].display_name);
+          console.log(results[i].picture);
+        }
+      }
     });
     //omdb ajax call
     $.ajax({
