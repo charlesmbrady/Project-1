@@ -25,6 +25,7 @@
 .dropdown-item {
     background-color: #241623;
     color: #d0cd94;
+    padding: 0%;
 }
 
 .dropdown-item:hover {
@@ -34,7 +35,6 @@
 
 .bg-image {
     background-image: url("../images/logoTest.png");
-    opacity: 30%;
     height: 100%; 
     background-position: center;
     background-repeat: no-repeat;
@@ -59,7 +59,7 @@ form {
     padding: 40px;
     text-align: center;
     width: 50%;
-    border: solid 1px #d56f3e;
+    border: solid 1.5px #d56f3e;
     background-color: #d0cd94;
     border-radius: 60px/40px;
 
@@ -69,6 +69,10 @@ button {
     background-color: #3c787e;
     color: white;
     outline-color: #241623;
+}
+
+.sign-in {
+    background-color: bisque;
 }
 
 footer {
