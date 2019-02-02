@@ -1,6 +1,5 @@
 #wolfIcon {
-    height: 100px;
-    width: 100px;
+    height: 150px;
     margin: 0 auto;
     background-size: contain;
     background-repeat: no-repeat;
@@ -16,39 +15,50 @@
     height: 100px;
 }
 
-header{
+.jumbotron {
+    margin-top: -1px;
     background-color: #c7ef00;
     text-align: center;
     padding: 30px;
 }
 
-.menu {
-    color: #3c787e;
+.dropdown-item {
+    background-color: #241623;
+    color: #d0cd94;
 }
 
-li:hover {
+.dropdown-item:hover {
     background-color: #d56f3e;
     color: #241623;
 }
 
-body {
-    background-image: url("../images/logoTest.png") ;
+.bg-image {
+    background-image: url("../images/logoTest.png");
+    opacity: 30%;
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
-    background-color: #d0cd94;
-    color: #241623;
 }
 
-.search {
+.btn {
+    background-color: #3c787e;
+    color: #c7ef00;
+    border: 1px solid #241623;
+}
+
+.searchbtn {
     background-color: #d56f3e;
     color: #d0cd94;
     outline-color: #3c787e
 }
 
 form {
-    margin: 25px;
-    padding: 20px;
+    margin-left: 25%;
+    margin-top: 10px;
+    padding: 40px;
     text-align: center;
-    width: 30%;
+    width: 50%;
     border: solid 1px #d56f3e;
     background-color: #d0cd94;
     border-radius: 60px/40px;
@@ -59,4 +69,13 @@ button {
     background-color: #3c787e;
     color: white;
     outline-color: #241623;
+}
+
+footer {
+    background-color: #d0cd94;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }

@@ -6,54 +6,64 @@
     <title>Where Watch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/syles/foundation.css"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">-->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/main.css"/>
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">-->
-    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">-->
-  </head>
-<body>
-    <header>
-        <div class = "row">
-            <div class = "columns medium-4">
-                <ul class="menu vertical">
-                    <li><a href="#">One</a></li>
-                        <li><a href="#">Two</a></li>
-                    <li><a href="#">Three</a></li>
-                    <li><a href="#">Four</a></li>
-                </ul>
-            </div>
-            <div class = "columns medium-3 wolf">
-                <div id="wolfIcon"></div>
-                <!--<img id = "wolfIcon" src = "assets/images/werewolfStanding.png">
-                <img id = "wolfIcon2" src = "assets/images/werewolfHowl.png">-->
-            </div>
-            <div class = "columns medium-5">
-                <h1>Where Watch</h1>
+</head>
+<body class="bg-image">
+    <header class = "jumbotron jumbotron-fluid">
+        <div class = "container">
+            <div class = "row">
+                    <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              menu
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                              <button class="dropdown-item" type="button">Home</button>
+                              <button class="dropdown-item" type="button">Movies</button>
+                              <button class="dropdown-item" type="button">Sign In</button>
+                              <button class="dropdown-item" type="button">Favorites</button>
+                            </div>
+                          </div>
+                <div class = "col-md-3 wolf">
+                    <div id="wolfIcon"></div>
+                </div>
+                <div class = "col-md-5">
+                    <h1>Where Watch</h1>
+                </div>
             </div>
         </div>
     </header>
     <form>
-        <div class="grid-container">
-          <div class="grid-x grid-padding-x">
-            <div class="medium-6 cell">
-              <label>What are you looking for?
-                <input type="text" id = "searchShows" placeholder="search for shows and movies">
-              </label>
-            </div>
+        <div class="form-group">
             <div class = "row">
-                   <div class = "medium-4 columns">
-                        <button class = "shows" type="submit">Shows</button>
-                    </div>
-                    <div class = "medium-4 columns">
-                        <button class = "movies" type="submit">Movies</button>
-                    </div>
-                    <div class = "medium-4 columns">
-                        <button class = "favorites" type="submit">Favoirtes</button>
-                    </div>
+                <div class = "col-md-9">
+                    <label for="search">Search Movies and Shows</label>
+                    <input type="text" class="searchShows" id="search" placeholder="What are you looking for?">
                 </div>
-          </div>
+                <div class = "col-md-3">
+                    <button type="submit" class="btn btn-info searchbtn">Search</button>
+                </div>
+            </div>
         </div>
-      </form>
+        <div class = "row">
+            <div class = "col-md-3">
+                <button type="submit" class="btn btn-info">Movies</button>
+            </div>
+            <div class = "col-md-3">
+                    <button type="submit" class="btn btn-info">Shows</button>
+            </div>
+            <div class = "col-md-3">
+                    <button type="submit" class="btn btn-info">Favorites</button>
+            </div>
+        </div>
+    </form>
+<footer>
+    <P>UNC coding bootcamp project 1 Charles, Sara, Wes, Amy</P>
+</footer>        
 <script src="assets/script/main.js"></script>
 </body>
 </html>
