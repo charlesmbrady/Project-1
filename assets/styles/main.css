@@ -29,3 +29,17 @@ button {
     color: white;
     outline-color: #241623;
 }
+.myDiv {
+    height:15%;
+    width:20%;
+    float: left;
+}
+#signInForm{
+    display: none;
+}
+#signUpForm{
+    display: none;
+}
+#passResetForm{
+    display:none;
+}
