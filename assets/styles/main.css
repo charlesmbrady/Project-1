@@ -71,10 +71,6 @@ button {
     outline-color: #241623;
 }
 
-.sign-in {
-    background-color: bisque;
-}
-
 footer {
     background-color: #d0cd94;
     position: fixed;
@@ -82,4 +78,18 @@ footer {
     bottom: 0;
     width: 100%;
     text-align: center;
+}
+.myDiv {
+    height:15%;
+    width:20%;
+    float: left;
+}
+#signInForm{
+    display: none;
+}
+#signUpForm{
+    display: none;
+}
+#passResetForm{
+    display:none;
 }
