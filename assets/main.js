@@ -153,17 +153,17 @@ function initApp() {
   var gbApiKey= "?api_key=1da49a76dc5aff961a13224d42119be60f600160";
   var cors = 'https://cors-anywhere.herokuapp.com/'
  
-$(".search").click(function(e){
+$(".searchbtn").click(function(e){
     e.preventDefault();
-    var searchInput=$("#searchShows").val().trim();
+    var searchInput=$(".searchShows").val().trim();
     var omdbQueryURL = "https://www.omdbapi.com/?s=" + searchInput + "&type=" + omdbType + "&y=" + year + "&plot=short&apikey=" + omdbApiKey;
     var gbQueryURL= cors+"https://api-public.guidebox.com/v2/search"+gbApiKey+"&type=movie&field=title&query="+searchInput;
     // GuideBox ajax call:
     $.ajax({
-      url: gbQueryURL,
-      method:"GET"
-    }).done(function(response){
-      $('#searchShows').val('');
+      url:gbQueryURL,
+      method: 'GET'
+      }).then(function(response) {
+      $('.searchShows').val('');
       console.log(response);
       var results = response.results;
       if (results == '') {$("<div class='col-md-12'>").text("There isn't a movie for this search. Womp womp. :(").appendTo('.container')};
@@ -174,7 +174,7 @@ $(".search").click(function(e){
         console.log('This is the movie rating: '+movieRating);
         var movieRatingBtn = $('<button>', {type:'button', class:'btn btn-primary btn-sm', text:'RATED: '+movieRating});
         var movieImage = $('<img>', {class: 'movie-image', src:moviePosters[0]});
-        $('.container').append(displayDiv.append(movieImage, movieRatingBtn))
+        $('#searchArea').append(displayDiv.append(movieImage, movieRatingBtn))
       }});
     
     // OMDB ajax call:
@@ -186,7 +186,7 @@ $(".search").click(function(e){
         // console.log('This is the OMDB response: '+results);
       })
     }); // End Search-On-Click Function
-
+  
 
   /* No longer used uTelly code/ajax calls:
   
