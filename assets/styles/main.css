@@ -52,6 +52,11 @@
     color: #d0cd94;
     outline-color: #3c787e
 }
+#userName{
+    background: white;
+    height:50px;
+    width: 50px;
+}
 
 form {
     margin-left: 25%;

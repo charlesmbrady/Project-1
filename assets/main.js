@@ -1,33 +1,35 @@
- // Initialize Firebase
- 
- var config = {
-    apiKey: "AIzaSyAd0GSEzY-bgVN43P-NOzMVEgWSKUZtSpY",
-    authDomain: "wherewatch-15568.firebaseapp.com",
-    databaseURL: "https://wherewatch-15568.firebaseio.com",
-    projectId: "wherewatch-15568",
-    storageBucket: "wherewatch-15568.appspot.com",
-    messagingSenderId: "497362531097"
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCdgaw55sm3H8fFFhWQde3hBthNVCtfFTs",
+    authDomain: "streamingproject1.firebaseapp.com",
+    databaseURL: "https://streamingproject1.firebaseio.com",
+    projectId: "streamingproject1",
+    storageBucket: "streamingproject1.appspot.com",
+    messagingSenderId: "507353543186"
+
   };
   firebase.initializeApp(config);
   var database = firebase.database();
   
-  function signUpForm(){
+  $('#signUp').on('click',function(){
     $('.container').css('display', 'none');
-    $('.signUpForm').css('display', 'block');
-  };
-  function login(){
+    $('#signUpForm').css('display', 'block');
+  });
+  $('#login').on('click',function(){
     $('.container').css('display', 'none');
     $('#signInForm').css('display', 'block');
-  };
-  function passResetSetUp(){
+  });
+  $('#go2PasswordReset').on('click',function(){
     $('#signInForm').css('display', 'none');
     $('#passResetForm').css('display', 'block');
-  }
-  $('#login').click(login);
-  $('#signUp').click(signUpForm);
-  $('#passwordReset').click(passResetSetUp);
+  });
+  
+
+  
   //You can then get the user's basic profile information from the User object. 
-  function SignIn() {
+  
+  $('#sign-in').on('click',function() {
     if (firebase.auth().currentUser) {
       // [START signout]
       firebase.auth().signOut();
@@ -58,10 +60,13 @@
     }
     $('.container').css('display','block');
     $('#signInForm').css('display', 'none');
-  }
-  function SignUp() {
-    var email = $('#emailInput').val();
-    var password = $('#passwordInput').val();  
+  });
+
+  $('#sign-up').on("click", function(e) {
+    e.preventDefault();
+    var email = $('#emailInput1').val();
+    var password = $('#passwordInput1').val();  
+    console.log("clicked")
     if (email.length < 4) {
       $('.alert').text('Please enter a valid email address.');
       return;
@@ -84,10 +89,10 @@
   });
   // [END createwithemail]
   $('.container').css('display', 'block');
-  $('.signUpForm').css('display', 'none');
-};
+  $('#signUpForm').css('display', 'none');
+});
 
-function sendPasswordReset() {
+$('#passwordReset').on('click', function() {
   var email = $('#emailInput').val();
   // [START sendpasswordemail]
   firebase.auth().sendPasswordResetEmail(email).then(function() {
@@ -109,26 +114,49 @@ function sendPasswordReset() {
     // [END_EXCLUDE]
   });
   // [END sendpasswordemail];
-}
+});
 
-function initApp() {
+
+
+
+
+
+
+//function initApp() {
   // Listening for auth state changes.
   // [START authstatelistener]
   firebase.auth().onAuthStateChanged(function(user) {
-
+    var user = firebase.auth().currentUser;
     if (user) {
+ 
+      user.updateProfile({
+        displayName: "Jane Q. User",
+        photoURL: "https://example.com/jane-q-user/profile.jpg"
+      }).then(function() {
+        console.log(displayName);
+        // Update successful.
+      }).catch(function(error) {
+        // An error happened.
+      });
       // User is signed in.
       var displayName = user.displayName;
       var email = user.email;
       var uid = user.uid;
       var providerData = user.providerData;
       // [START_EXCLUDE]
+    
       $('#sign-out').css('display', 'block');
       $('#sign-in').css('display', 'none');
-      $('#userName').text(displayName);
-
+      
       // [END_EXCLUDE]
     } else {
+      $('#signOutBtn').click(function(){
+        firebase.auth().signOut().then(function() {
+          console.log('Signed Out');
+        }, function(error) {
+          console.error('Sign Out Error', error);
+        });
+      });
       // User is signed out.
       // [START_EXCLUDE]
       $('#sign-in').css('display', 'block');
@@ -136,14 +164,10 @@ function initApp() {
       // [END_EXCLUDE]
     }
 
-    $('#sign-in').click(SignIn);
-    $('#sign-up').click(SignUp);
-    $('#passwordReset').click(sendPasswordReset);
-    $('#sign-out').click(function(){
-      firebase.auth().signOut();
-    });
-  })};
-  
+    
+  });
+
+
   //Utelly for Netflix, google play and amazon prime
   //omdb variables
 
@@ -218,4 +242,6 @@ $(".search").click(function(e){
           $("body").append(div);
         }
       }
+
     });*/
+
