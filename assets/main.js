@@ -1,4 +1,5 @@
  // Initialize Firebase
+ 
  var config = {
     apiKey: "AIzaSyAd0GSEzY-bgVN43P-NOzMVEgWSKUZtSpY",
     authDomain: "wherewatch-15568.firebaseapp.com",
@@ -141,36 +142,58 @@ function initApp() {
     $('#sign-out').click(function(){
       firebase.auth().signOut();
     });
-  });
+  })};
   
-
   //Utelly for Netflix, google play and amazon prime
-  var searchInput ="";
   //omdb variables
 
   var omdbType= "";
   var year= "";
   var omdbApiKey = "7cc4d503";
-  var gbApiKey= "1da49a76dc5aff961a13224d42119be60f600160";
+  var gbApiKey= "?api_key=1da49a76dc5aff961a13224d42119be60f600160";
+  var cors = 'https://cors-anywhere.herokuapp.com/'
  
 $(".search").click(function(e){
     e.preventDefault();
-    searchInput=$("#searchShows").val();
-    
-    $("form").empty();
-   
-    var utellyQueryURL= "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term="+ searchInput;
-
-
+    var searchInput=$("#searchShows").val().trim();
     var omdbQueryURL = "https://www.omdbapi.com/?s=" + searchInput + "&type=" + omdbType + "&y=" + year + "&plot=short&apikey=" + omdbApiKey;
-    var gbQueryURL= "https://api-public.guidebox.com/v2/channels??api_key="+gbApiKey+"&type=movie&query="+searchInput;
+    var gbQueryURL= cors+"https://api-public.guidebox.com/v2/search"+gbApiKey+"&type=movie&field=title&query="+searchInput;
+    // GuideBox ajax call:
     $.ajax({
       url: gbQueryURL,
       method:"GET"
-    }).then(function(response){
+    }).done(function(response){
+      $('#searchShows').val('');
       console.log(response);
-    })
+      var results = response.results;
+      if (results == '') {$("<div class='col-md-12'>").text("There isn't a movie for this search. Womp womp. :(").appendTo('.container')};
+      for (var i = 0; i < results.length; i++) {
+        var displayDiv = $("<div class='col-md-4'>");  
+        var moviePosters = [results[i].poster_240x342, results[i].poster_120x171, results[i].poster_400x570];
+        var movieRating = results[i].rating.toUpperCase();
+        console.log('This is the movie rating: '+movieRating);
+        var movieRatingBtn = $('<button>', {type:'button', class:'btn btn-primary btn-sm', text:'RATED: '+movieRating});
+        var movieImage = $('<img>', {class: 'movie-image', src:moviePosters[0]});
+        $('.container').append(displayDiv.append(movieImage, movieRatingBtn))
+      }});
+    
+    // OMDB ajax call:
     $.ajax({
+        url: omdbQueryURL,
+        method: "GET"
+      }).done(function(response) {
+        var results = response.results;
+        // console.log('This is the OMDB response: '+results);
+      })
+    }); // End Search-On-Click Function
+
+  };
+  
+
+  /* No longer used uTelly code/ajax calls:
+  
+  var utellyQueryURL= "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term="+ searchInput; 
+      $.ajax({
       url: utellyQueryURL,
       headers:{
         "X-RapidAPI-Key": "PaDoWG4Fd0mshh2MgIGtSmVmiiQTp1nM0Y8jsnhfVgnVQvg7Rt"
@@ -197,13 +220,4 @@ $(".search").click(function(e){
           $("body").append(div);
         }
       }
-    });
-    //omdb ajax call
-    $.ajax({
-        url: omdbQueryURL,
-        method: "GET"
-      }).then(function(response) {
-        console.log(response);
-      })
-    });
-  }
+    });*/
