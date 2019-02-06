@@ -1,5 +1,5 @@
 #wolfIcon {
-    height: 150px;
+    height: 100px;
     margin: 0 auto;
     background-size: contain;
     background-repeat: no-repeat;
@@ -12,45 +12,39 @@
 }
 
 #wolfIcon2 {
-    height: 100px;
+    height: 75px;
 }
 
 .jumbotron {
     margin-top: -1px;
-    background-color: #c7ef00;
+    background-color: #8af3ff;
     text-align: center;
     padding: 30px;
 }
 
 .dropdown-item {
-    background-color: #241623;
-    color: #d0cd94;
+    background-color: #484349;
+    color: #f7f0f0;
     padding: 0%;
 }
 
 .dropdown-item:hover {
-    background-color: #d56f3e;
+    background-color: #18a999;;
     color: #241623;
 }
 
 .bg-image {
-    background-image: url("../images/logoTest.png");
+    background-image: url("../images/biglogobackground.png");
     height: 100%; 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.btn {
-    background-color: #3c787e;
-    color: #c7ef00;
-    border: 1px solid #241623;
-}
-
 .searchbtn {
-    background-color: #d56f3e;
-    color: #d0cd94;
-    outline-color: #3c787e
+    background-color:  #058c42;
+    color: #f7f0f0;
+    outline-color: #18a999;
 }
 
 form {
@@ -59,20 +53,19 @@ form {
     padding: 40px;
     text-align: center;
     width: 50%;
-    border: solid 1.5px #d56f3e;
-    background-color: #d0cd94;
+    border: solid 1.5px #18a999;
+    background-color: #f7f0f0;
     border-radius: 60px/40px;
-
 }
 
 button {
-    background-color: #3c787e;
+    background-color: #18a999;
     color: white;
-    outline-color: #241623;
+    outline-color: #484349;
 }
 
 footer {
-    background-color: #d0cd94;
+    background-color: #f7f0f0;
     position: fixed;
     left: 0;
     bottom: 0;
