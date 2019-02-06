@@ -25,7 +25,7 @@
                               Menu
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                              <button class="dropdown-item" type="button">Home</button>
+                              <button id="homeBtn" class="dropdown-item" type="button">Home</button>
                               <button class="dropdown-item" type="button">Movies</button>
                               <button id= "login" class="dropdown-item" type="button">Sign In</button>
                               <button id= "signUp" class="dropdown-item" type="button">Sign Up</button>
@@ -46,11 +46,11 @@
         <h3 class='alert'></h3>
         <div class="form-group">
           <label for="inputEmail">Email address</label>
-          <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="email@example.com">
+          <input type="email" class="form-control" id="emailInput1" aria-describedby="emailHelp" placeholder="email@example.com">
         </div>
         <div class="form-group">
           <label for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+          <input type="password" class="form-control" id="passwordInput1" placeholder="Password">
         </div>
         <button type="submit" id="sign-in" class="btn btn-primary">Sign In</button>
         <button type="submit" id="go2PasswordReset">Forgot your password?</button>
@@ -63,11 +63,11 @@
         </div>
         <div class="form-group">
           <label for="inputEmail">Email address</label>
-          <input type="email" class="form-control" id="emailInput1" aria-describedby="emailHelp" placeholder="email@example.com">
+          <input type="email" class="form-control" id="emailInput2" aria-describedby="emailHelp" placeholder="email@example.com">
         </div>
         <div class="form-group">
           <label for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="passwordInput1" placeholder="Password">
+          <input type="password" class="form-control" id="passwordInput2" placeholder="Password">
           <small id="passwordHelp" class="form-text text-muted">Password must be at least 6 characters.</small>
         </div>
         <button type="submit" id="sign-up" class="btn btn-primary">Sign Up</button>
@@ -76,13 +76,13 @@
         <h3 class='alert'></h3>
         <div class="form-group">
             <label for="inputEmail">Email address</label>
-            <input type="email" class="form-control" id="emailInput2" aria-describedby="emailHelp" placeholder="email@example.com">
+            <input type="email" class="form-control" id="emailInput3" aria-describedby="emailHelp" placeholder="email@example.com">
         </div>
         <button type="submit" id="passwordReset" class="btn btn-primary">Reset Password</button>
       </form>
                         
         </div>
-       <form>
+       <form id='searchContainer'>
         <div class="form-group">
             <div class = "row">
                 <div class = "col-md-9">
@@ -108,7 +108,7 @@
     </form>
 
 <footer>
-    <P>UNC coding bootcamp project 1 Charles, Sara, Wes, Amy</P>
+    <P>UNC coding bootcamp project 1 Charles, Sarah, Wes, Amy</P>
 </footer>        
 
     <script src="assets/main.js"></script>
