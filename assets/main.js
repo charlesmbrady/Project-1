@@ -187,8 +187,6 @@ $(".search").click(function(e){
       })
     }); // End Search-On-Click Function
 
-  };
-  
 
   /* No longer used uTelly code/ajax calls:
   
