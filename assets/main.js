@@ -222,7 +222,8 @@ $(".search").click(function(e){
         console.log('This is the movie rating: '+movieRating);
         var movieRatingBtn = $('<button>', {type:'button', class:'btn btn-primary btn-sm', text:'RATED: '+movieRating});
         var movieImage = $('<img>', {class: 'movie-image', src:moviePosters[0]});
-        $('.container').append(displayDiv.append(movieImage, movieRatingBtn))
+        var fav = $("<img>").addClass("fav").attr("src", "https://www.freeiconspng.com/uploads/heart-icon-14.png");
+        $('.container').append(displayDiv.append(movieImage, movieRatingBtn, fav))
       }});
     
     // OMDB ajax call:
