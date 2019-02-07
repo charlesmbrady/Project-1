@@ -20,6 +20,11 @@
     background-color: #8af3ff;
     text-align: center;
     padding: 30px;
+} 
+
+h1 {
+    font-family: 'Covered By Your Grace', cursive;
+    font-size: 55px;
 }
 
 .dropdown-item {

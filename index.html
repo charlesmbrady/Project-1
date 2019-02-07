@@ -6,16 +6,16 @@
     <title>Where Watch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/dark.css"></link>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/main.css"/>
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>  
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/dark.css"></link>
+    <link href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" media="screen" href="assets/styles/dark.css"></link>-->
 </head>
-<body class="bg-image">
+<body>
     <header class = "jumbotron jumbotron-fluid">
         <div class = "container">
             <div class = "row">
@@ -37,45 +37,46 @@
                   <h1>Where Watch</h1>
                 </div>
     </header>
-
-    <form id="signInForm">
-        <h3 class='alert'></h3>
-        <div class="form-group">
-          <label for="inputEmail">Email address</label>
-          <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="email@example.com">
-        </div>
-        <div class="form-group">
-          <label for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="passwordInput" placeholder="Password">
-        </div>
-        <button type="submit" id="sign-in" class="btn btn-primary">Sign In</button>
-        <button type="submit" id="passwordReset">Forgot your password?</button>
-      </form>
-      <form id="signUpForm">
-        <h3 class='alert'></h3>
-        <div class="form-group">
-            <label for="inputUserName">User Name</label>
-            <input type="userName" class="form-control" id="userNameInput" aria-describedby="emailHelp">
-        </div>
-        <div class="form-group">
-          <label for="inputEmail">Email address</label>
-          <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="email@example.com">
-        </div>
-        <div class="form-group">
-          <label for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="passwordInput" placeholder="Password">
-          <small id="passwordHelp" class="form-text text-muted">Password must be at least 6 characters.</small>
-        </div>
-        <button type="submit" id="sign-up" class="btn btn-primary">Sign Up</button>
-      </form>
-      <form id="passResetForm">
-        <h3 class='alert'></h3>
-        <div class="form-group">
-            <label for="inputEmail">Email address</label>
-            <input type="email" class="form-control" id="emailInput2" aria-describedby="emailHelp" placeholder="email@example.com">
-        </div>
-        <button type="submit" id="passwordReset" class="btn btn-primary">Reset Password</button>
-      </form>
+<div class = container>
+    <div class = "bg-image">
+        <form id="signInForm">
+            <h3 class='alert'></h3>
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="email@example.com">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+            </div>
+            <button type="submit" id="sign-in" class="btn btn-primary">Sign In</button>
+            <button type="submit" id="passwordReset">Forgot your password?</button>
+        </form>
+        <form id="signUpForm">
+            <h3 class='alert'></h3>
+            <div class="form-group">
+                <label for="inputUserName">User Name</label>
+                <input type="userName" class="form-control" id="userNameInput" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="email@example.com">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+                <small id="passwordHelp" class="form-text text-muted">Password must be at least 6 characters.</small>
+            </div>
+            <button type="submit" id="sign-up" class="btn btn-primary">Sign Up</button>
+        </form>
+        <form id="passResetForm">
+            <h3 class='alert'></h3>
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" class="form-control" id="emailInput2" aria-describedby="emailHelp" placeholder="email@example.com">
+            </div>
+            <button type="submit" id="passwordReset" class="btn btn-primary">Reset Password</button>
+        </form>
                         
         </div>
        <form>
@@ -90,9 +91,9 @@
                 </div>
             </div>
         </div>
-    </form>
-
-
+        </form>
+    </div>
+</div>
 <footer>
     <P>UNC coding bootcamp project 1 Charles, Sara, Wes, Amy</P>
 </footer>        
