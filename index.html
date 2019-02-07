@@ -6,14 +6,15 @@
     <title>Where Watch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/dark.css"></link>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/main.css"/>
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>  
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/dark.css"></link>
 </head>
 <body class="bg-image">
     <header class = "jumbotron jumbotron-fluid">
@@ -24,12 +25,15 @@
                               Menu
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                              <button class="dropdown-item" type="button">Home</button>
+
+
+                              <button id="homeBtn" class="dropdown-item" type="button">Home</button>
                               <button class="dropdown-item" type="button">Movies</button>
                               <button id= "login" class="dropdown-item" type="button">Sign In</button>
                               <button id= "signUp" class="dropdown-item" type="button">Sign Up</button>
                               <button id= "signOutBtn" class="dropdown-item" type="button">Sign Out</button>
                               <button class="dropdown-item" type="button">Favorites</button>
+
                             </div>
                           </div>
                 <div class = "col-md-3 wolf">
@@ -45,11 +49,11 @@
         <h3 class='alert'></h3>
         <div class="form-group">
           <label for="inputEmail">Email address</label>
-          <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="email@example.com">
+          <input type="email" class="form-control" id="emailInput1" aria-describedby="emailHelp" placeholder="email@example.com">
         </div>
         <div class="form-group">
           <label for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+          <input type="password" class="form-control" id="passwordInput1" placeholder="Password">
         </div>
         <button type="submit" id="sign-in" class="btn btn-primary">Sign In</button>
         <button type="submit" id="go2PasswordReset">Forgot your password?</button>
@@ -62,11 +66,11 @@
         </div>
         <div class="form-group">
           <label for="inputEmail">Email address</label>
-          <input type="email" class="form-control" id="emailInput1" aria-describedby="emailHelp" placeholder="email@example.com">
+          <input type="email" class="form-control" id="emailInput2" aria-describedby="emailHelp" placeholder="email@example.com">
         </div>
         <div class="form-group">
           <label for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="passwordInput1" placeholder="Password">
+          <input type="password" class="form-control" id="passwordInput2" placeholder="Password">
           <small id="passwordHelp" class="form-text text-muted">Password must be at least 6 characters.</small>
         </div>
         <button type="submit" id="sign-up" class="btn btn-primary">Sign Up</button>
@@ -75,13 +79,15 @@
         <h3 class='alert'></h3>
         <div class="form-group">
             <label for="inputEmail">Email address</label>
-            <input type="email" class="form-control" id="emailInput2" aria-describedby="emailHelp" placeholder="email@example.com">
+            <input type="email" class="form-control" id="emailInput3" aria-describedby="emailHelp" placeholder="email@example.com">
         </div>
         <button type="submit" id="passwordReset" class="btn btn-primary">Reset Password</button>
       </form>
                         
         </div>
-       <form id="searchArea">
+
+       <form id='searchContainer'>
+
         <div class="form-group">
             <div class = "row">
                 <div class = "col-md-9">
@@ -93,21 +99,10 @@
                 </div>
             </div>
         </div>
-        <div class = "row">
-            <div class = "col-md-3">
-                <button type="submit" class="btn btn-info">Movies</button>
-            </div>
-            <div class = "col-md-3">
-                    <button type="submit" class="btn btn-info">Shows</button>
-            </div>
-            <div class = "col-md-3">
-                    <button type="submit" class="btn btn-info">Favorites</button>
-            </div>
-        </div>
     </form>
 
 <footer>
-    <P>UNC coding bootcamp project 1 Charles, Sara, Wes, Amy</P>
+    <P>UNC coding bootcamp project 1 Charles, Sarah, Wes, Amy</P>
 </footer>        
 
     <script src="assets/main.js"></script>

@@ -12,31 +12,46 @@
   firebase.initializeApp(config);
   var database = firebase.database();
   
-  $('#signUp').on('click',function(){
-    $('.container').css('display', 'none');
+  $('#signUp').on('click',function(e){
+    e.preventDefault();
+    $('#searchContainer').css('display', 'none');
+    $('#signInForm').css('display', 'none');
+    $('#passResetForm').css('display', 'none');
     $('#signUpForm').css('display', 'block');
   });
-  $('#login').on('click',function(){
-    $('.container').css('display', 'none');
+  $('#login').on('click',function(e){
+    e.preventDefault();
+    $('#searchContainer').css('display', 'none');
+    $('#passResetForm').css('display', 'none');
+    $('#signUpForm').css('display', 'none');
     $('#signInForm').css('display', 'block');
   });
-  $('#go2PasswordReset').on('click',function(){
+  $('#go2PasswordReset').on('click',function(e){
+    e.preventDefault();
     $('#signInForm').css('display', 'none');
+    $('#searchContainer').css('display', 'none');
+    $('#signUpForm').css('display', 'none');
     $('#passResetForm').css('display', 'block');
   });
   
-
+  $('#homeBtn').on('click',function(){
+    $('#signInForm').css('display', 'none');
+    $('#signUpForm').css('display', 'none');
+    $('#passResetForm').css('display', 'none');
+    $('#searchContainer').css('display', 'block');
+  })
   
   //You can then get the user's basic profile information from the User object. 
   
-  $('#sign-in').on('click',function() {
+  $('#sign-in').on('click',function(e) {
+    e.preventDefault();
     if (firebase.auth().currentUser) {
       // [START signout]
       firebase.auth().signOut();
       // [END signout]
     } else {
-      var email = $('#email').val();
-      var password = $('#password').val();
+      var email = $('#emailInput1').val();
+      var password = $('#passwordInput1').val();
       if (email.length < 4) {
         $('.alert').text('Please enter an email address.');
         return;
@@ -58,14 +73,14 @@
         console.log(error);
       });
     }
-    $('.container').css('display','block');
+    $('#searchContainer').css('display','block');
     $('#signInForm').css('display', 'none');
   });
 
   $('#sign-up').on("click", function(e) {
     e.preventDefault();
-    var email = $('#emailInput1').val();
-    var password = $('#passwordInput1').val();  
+    var email = $('#emailInput2').val();
+    var password = $('#passwordInput2').val();  
     console.log("clicked")
     if (email.length < 4) {
       $('.alert').text('Please enter a valid email address.');
@@ -88,12 +103,13 @@
     // [END_EXCLUDE]
   });
   // [END createwithemail]
-  $('.container').css('display', 'block');
+  $('#searchContainer').css('display', 'block');
   $('#signUpForm').css('display', 'none');
 });
 
-$('#passwordReset').on('click', function() {
-  var email = $('#emailInput').val();
+$('#passwordReset').on('click', function(e) {
+  e.preventDefault();
+  var email = $('#emailInput3').val();
   // [START sendpasswordemail]
   firebase.auth().sendPasswordResetEmail(email).then(function() {
     // Password Reset Email Sent!
@@ -113,6 +129,8 @@ $('#passwordReset').on('click', function() {
     console.log(error);
     // [END_EXCLUDE]
   });
+  $('#searchContainer').css('display', 'block');
+  $('#passResetForm').css('display', 'none');
   // [END sendpasswordemail];
 });
 
@@ -144,19 +162,25 @@ $('#passwordReset').on('click', function() {
       var uid = user.uid;
       var providerData = user.providerData;
       // [START_EXCLUDE]
-    
-      $('#sign-out').css('display', 'block');
-      $('#sign-in').css('display', 'none');
-      
-      // [END_EXCLUDE]
-    } else {
-      $('#signOutBtn').click(function(){
+    $('#login').on('click', function(){
+      $('.alert').text("You're already signed in!");
+    })
+      $('#signOutBtn').on('click', function(e){
+        e.preventDefault();
+        console.log('click');
         firebase.auth().signOut().then(function() {
           console.log('Signed Out');
         }, function(error) {
           console.error('Sign Out Error', error);
         });
+        $('#searchContainer').css('display', 'block');
+        $('#signInForm').css('display', 'none');
+        $('#passResetForm').css('display', 'none');
+        $('#signUpForm').css('display', 'none');
       });
+      // [END_EXCLUDE]
+    } else {
+      $('.alert').text("");
       // User is signed out.
       // [START_EXCLUDE]
       $('#sign-in').css('display', 'block');
@@ -198,7 +222,10 @@ $(".searchbtn").click(function(e){
         console.log('This is the movie rating: '+movieRating);
         var movieRatingBtn = $('<button>', {type:'button', class:'btn btn-primary btn-sm', text:'RATED: '+movieRating});
         var movieImage = $('<img>', {class: 'movie-image', src:moviePosters[0]});
-        $('#searchArea').append(displayDiv.append(movieImage, movieRatingBtn))
+
+        var fav = $("<img>").addClass("fav").attr("src", "https://www.freeiconspng.com/uploads/heart-icon-14.png");
+        $('.searchContainer').append(displayDiv.append(movieImage, movieRatingBtn, fav))
+
       }});
     
     // OMDB ajax call:
