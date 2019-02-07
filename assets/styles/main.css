@@ -51,6 +51,11 @@ h1 {
     color: #f7f0f0;
     outline-color: #18a999;
 }
+#userName{
+    background: white;
+    height:50px;
+    width: 50px;
+}
 
 form {
     margin-left: 25%;
@@ -90,4 +95,18 @@ footer {
 }
 #passResetForm{
     display:none;
+}
+
+.movie-image {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    border-color: hsl(0, 0%, 5%);
+}
+
+#renderResults {
+    background-color: #ddd;
+    color: black;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    border-color: hsl(0, 0%, 5%);
 }
