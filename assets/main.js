@@ -201,9 +201,10 @@ $('#passwordReset').on('click', function(e) {
   var gbApiKey= "?api_key=1da49a76dc5aff961a13224d42119be60f600160";
   var cors = 'https://cors-anywhere.herokuapp.com/'
  
-$(".search").click(function(e){
+$(".searchbtn").click(function(e){
     e.preventDefault();
-    var searchInput=$("#searchShows").val().trim();
+    console.log("working");
+    var searchInput=$("#search").val().trim();
     var omdbQueryURL = "https://www.omdbapi.com/?s=" + searchInput + "&type=" + omdbType + "&y=" + year + "&plot=short&apikey=" + omdbApiKey;
     var gbQueryURL= cors+"https://api-public.guidebox.com/v2/search"+gbApiKey+"&type=movie&field=title&query="+searchInput;
     // GuideBox ajax call:
@@ -223,7 +224,7 @@ $(".search").click(function(e){
         var movieRatingBtn = $('<button>', {type:'button', class:'btn btn-primary btn-sm', text:'RATED: '+movieRating});
         var movieImage = $('<img>', {class: 'movie-image', src:moviePosters[0]});
         var fav = $("<img>").addClass("fav").attr("src", "https://www.freeiconspng.com/uploads/heart-icon-14.png");
-        $('.container').append(displayDiv.append(movieImage, movieRatingBtn, fav))
+        $('#searchContainer').append(displayDiv.append(movieImage, movieRatingBtn, fav))
       }});
     
     // OMDB ajax call:
