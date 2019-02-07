@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
+
     <!-- Popper.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <!-- Bootstrap Grid & CSS -->
@@ -17,10 +19,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <!-- Font Styling & CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <!-- Carousel Function Link -->
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-    <!-- Carousel Function Script -->
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
     <!-- Local CSS Style -->  
     <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/main.css"/>
     <!-- Local CSS Dark -->  
@@ -28,10 +27,10 @@
     <!-- Modularized JavaScript -->
     <script type="text/javascript" src="assets/main.js" defer></script>
     <script type="text/javascript" src="assets/calls.js" defer></script>
-
 </head>
+
 <body class="bg-image">
-    
+
     <!-- Header and Navigation -->
     <header class = "jumbotron jumbotron-fluid">
         <div class = "container">
@@ -50,32 +49,36 @@
                         </div>
                     </div>
                 <div class = "col-md-3 wolf">
+
                     <div id="wolfIcon"></div>
                 </div>
-                <div class = "col-md-5">
-                  <h1>Where Watch</h1>
+                <div class="col-md-5">
+                    <h1>Where Watch</h1>
                 </div>
                 <h2 id="userName"></h2>
             </div>
         </div>
     </header>
+
     
     <!-- Existing User Signin -->
+
     <form id="signInForm">
         <h3 class='alert'></h3>
         <div class="form-group">
-          <label for="inputEmail">Email address</label>
-          <input type="email" class="form-control" id="emailInput1" aria-describedby="emailHelp" placeholder="email@example.com">
+            <label for="inputEmail">Email address</label>
+            <input type="email" class="form-control" id="emailInput1" aria-describedby="emailHelp" placeholder="email@example.com">
         </div>
         <div class="form-group">
-          <label for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="passwordInput1" placeholder="Password">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="passwordInput1" placeholder="Password">
         </div>
         <button type="submit" id="sign-in" class="btn btn-primary">Sign In</button>
         <button type="submit" id="go2PasswordReset">Forgot your password?</button>
     </form>
 
     <!-- User Registration -->
+
     <form id="signUpForm">
         <h3 class='alert'></h3>
         <div class="form-group">
@@ -83,18 +86,19 @@
             <input type="userName" class="form-control" id="userNameInput" aria-describedby="emailHelp">
         </div>
         <div class="form-group">
-          <label for="inputEmail">Email address</label>
-          <input type="email" class="form-control" id="emailInput2" aria-describedby="emailHelp" placeholder="email@example.com">
+            <label for="inputEmail">Email address</label>
+            <input type="email" class="form-control" id="emailInput2" aria-describedby="emailHelp" placeholder="email@example.com">
         </div>
         <div class="form-group">
-          <label for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="passwordInput2" placeholder="Password">
-          <small id="passwordHelp" class="form-text text-muted">Password must be at least 6 characters.</small>
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" id="passwordInput2" placeholder="Password">
+            <small id="passwordHelp" class="form-text text-muted">Password must be at least 6 characters.</small>
         </div>
         <button type="submit" id="sign-up" class="btn btn-primary">Sign Up</button>
     </form>
 
     <!-- User Password Reset -->
+
     <form id="passResetForm">
         <h3 class='alert'></h3>
         <div class="form-group">
@@ -103,16 +107,19 @@
         </div>
         <button type="submit" id="passwordReset" class="btn btn-primary">Reset Password</button>
     </form>
-    
+
     <!-- Search Button & Search Input Area -->
+
+
+    </div>
     <form id='searchContainer'>
         <div class="form-group">
-            <div class = "row">
-                <div class = "col-md-9">
+            <div class="row">
+                <div class="col-md-9">
                     <label for="search">Search Movies and Shows</label>
                     <input type="text" class="searchShows" id="search" placeholder="What are you looking for?">
                 </div>
-                <div class = "col-md-3">
+                <div class="col-md-3">
                     <button type="submit" class="btn btn-info searchbtn">Search</button>
                 </div>
             </div>
@@ -124,11 +131,14 @@
         <div class='row' id='renderResults'></div>
     </div>
 
+
     <!-- Page Footer -->
     <footer>
         <P>UNC coding bootcamp project 1 Charles, Sarah, Wes, Amy</P>
     </footer>        
 
+
     <!-- End Document -->
 </body>
+
 </html>
