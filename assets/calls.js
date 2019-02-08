@@ -1,72 +1,71 @@
 // Begin Search-on-Click function:
- 
-$(".searchbtn").click(function(event){
-    event.preventDefault();
-    var omdbType= "";
-    var year= "";
-    var omdbApiKey = "&apikey=7cc4d503";
-    var gbApiKey= "?api_key=1da49a76dc5aff961a13224d42119be60f600160";
-    var cors = 'https://cors-anywhere.herokuapp.com/'
-    var searchInput=$(".searchShows").val().trim();
-    var omdbQueryURL = 'https://www.omdbapi.com/?s='+searchInput+'&type='+omdbType+"&y="+year+"&plot=full"+omdbApiKey;
-    var omdbPosterURL = 'https://img.omdbapi.com/?t='+searchInput+omdbApiKey;
-    var gbQueryURL= cors+"https://api-public.guidebox.com/v2/search"+gbApiKey+"&type=movie&field=title&query="+searchInput;
-    
-    // GuideBox API AJAX call:
-    /*
-    $.get(gbQueryURL).done(function(gbResponse){
-      $('.searchShows').val('');
-      var gbResults = gbResponse.results;
-      console.log(gbResults);
-      if (gbResults == '') {$("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp. :(").appendTo('#renderResults')};
-      for (var i = 0; i < gbResults.length; i++) {
-        var displayDiv = $("<div class='col-md-4'>");  
-        var moviePosters = [gbResults[i].poster_240x342, gbResults[i].poster_120x171, gbResults[i].poster_400x570];
-        var movieRating = gbResults[i].rating.toUpperCase();
-        console.log('This is the movie rating: '+movieRating);
-        var movieRatingBtn = $('<button>', {type:'button', class:'btn btn-primary btn-sm', text:'RATED: '+movieRating});
-        var movieImage = $('<img>', {class: 'movie-image', src:moviePosters[0]});
-        var fav = $('<img>', {class:'fav', src:'https://www.freeiconspng.com/uploads/heart-icon-14.png'});
-        $('#renderResults').append(displayDiv.append(movieImage, movieRatingBtn, fav))
-        }
-    });*/
-    
-    // console.log('---------------------------------------------------------');
 
-    // OMDB API AJAX call:
-    $.get(omdbQueryURL)
+$(".searchbtn").click(function (event) {
+  event.preventDefault();
+  var omdbType = "";
+  var year = "";
+  var omdbApiKey = "&apikey=7cc4d503";
+  var gbApiKey = "?api_key=1da49a76dc5aff961a13224d42119be60f600160";
+  var cors = 'https://cors-anywhere.herokuapp.com/'
+  var searchInput = $(".searchShows").val().trim();
+  var omdbQueryURL = 'https://www.omdbapi.com/?s=' + searchInput + '&type=' + omdbType + "&y=" + year + "&plot=full" + omdbApiKey;
+  var omdbPosterURL = 'https://img.omdbapi.com/?t=' + searchInput + omdbApiKey;
+  var gbQueryURL = cors + "https://api-public.guidebox.com/v2/search" + gbApiKey + "&type=movie&field=title&query=" + searchInput;
+
+  // GuideBox API AJAX call:
+  /*
+  $.get(gbQueryURL).done(function(gbResponse){
+    $('.searchShows').val('');
+    var gbResults = gbResponse.results;
+    console.log(gbResults);
+    if (gbResults == '') {$("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp. :(").appendTo('#renderResults')};
+    for (var i = 0; i < gbResults.length; i++) {
+      var displayDiv = $("<div class='col-md-4'>");  
+      var moviePosters = [gbResults[i].poster_240x342, gbResults[i].poster_120x171, gbResults[i].poster_400x570];
+      var movieRating = gbResults[i].rating.toUpperCase();
+      console.log('This is the movie rating: '+movieRating);
+      var movieRatingBtn = $('<button>', {type:'button', class:'btn btn-primary btn-sm', text:'RATED: '+movieRating});
+      var movieImage = $('<img>', {class: 'movie-image', src:moviePosters[0]});
+      var fav = $('<img>', {class:'fav', src:'https://www.freeiconspng.com/uploads/heart-icon-14.png'});
+      $('#renderResults').append(displayDiv.append(movieImage, movieRatingBtn, fav))
+      }
+  });*/
+
+  // console.log('---------------------------------------------------------');
+
+  // OMDB API AJAX call:
+  $.get(omdbQueryURL)
     /*$.get(omdbPosterURL)*/
-    .done(function(omdbResponse) {
-        $('.searchShows').val('');
-        console.log('-----------------------------------------------');
-        console.log(omdbResponse);
-        console.log('-----------------------------------------------');
-        /* console.log(omdbResponse2);
-        console.log('---------------------------------------------------------'); */
-        var omdbResults = omdbResponse.Search;
-        if (omdbResults == '') {$("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp. :(").appendTo('#renderResults')};
-        for (var i = 0; i < omdbResults.length; i++){
+    .done(function (omdbResponse) {
+      $('.searchShows').val('');
+      console.log('-----------------------------------------------');
+      console.log(omdbResponse);
+      console.log('-----------------------------------------------');
+
+
+      var omdbResults = omdbResponse.Search;
+      if (omdbResults == '') { $("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp. :(").appendTo('#renderResults') };
+      for (var i = 0; i < omdbResults.length; i++) {
         var imdbID = omdbResults[i].imdbID
         var displayDiv1 = $("<div class='package'>");
-        /* var displayDiv2 = $("<div class='col-md-4'>"); */ 
+
         var moviePosters = omdbResults[i].Poster;
-        var movieImage = $('<img>', {class: 'movie-image', src:moviePosters, 'data-imdbid': imdbID});
-        /* var movieRating = omdbResults.Rated.toUpperCase();  
-        var moviePlot = omdbResults.Plot;
-        */
+        var movieImage = $('<img>', { class: 'movie-image', src: moviePosters, 'data-imdbid': imdbID });
 
-        var fav = $('<img>', {class:'fav', src:'assets/images/heart-icon.png'}).attr('data-src', moviePosters); 
-        fav.attr('data-rating', movieRating);
-        fav.attr('data-plot', moviePlot);
 
-        $('#renderResults').prepend(displayDiv1.prepend(movieImage)); 
+        var fav = $('<img>', { class: 'fav', src: 'assets/images/heart-icon.png' }).attr('data-src', moviePosters);
+        
+
+        $('#renderResults').prepend(displayDiv1.prepend(movieImage));
         $('#renderResults').append(fav);
 
-    }
-  });
-    
-// End Search-on-Click function:
-}); 
+
+      }
+    });
+
+  // End Search-on-Click function:
+});
+
 
 
 
