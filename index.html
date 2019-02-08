@@ -12,15 +12,20 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Popper.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
     <!-- Bootstrap Grid & CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
     <!-- Font Styling & CSS -->
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <!-- Local CSS Style -->  
     <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/main.css"/>
     <link href="https://fonts.googleapis.com/css?family=Covered+By+Your+Grace" rel="stylesheet">
+
     <!-- Modularized JavaScript -->
     <script type="text/javascript" src="assets/main.js" defer></script>
     <script type="text/javascript" src="assets/calls.js" defer></script>
@@ -30,33 +35,36 @@
 
     <!-- Header and Navigation -->
 
-    <header class = "jumbotron jumbotron-fluid">
-        <div class = "container">
-            <div class = "row">
-                    <div class="dropdown">
-                        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Menu
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <button id="homeBtn" class="dropdown-item" type="button">Home</button>
-                            <button class="dropdown-item" type="button">Movies</button>
-                            <button id= "login" class="dropdown-item" type="button">Sign In</button>
-                            <button id= "signUp" class="dropdown-item" type="button">Sign Up</button>
-                            <button id= "signOutBtn" class="dropdown-item" type="button">Sign Out</button>
-                            <button class="dropdown-item" type="button">Favorites</button>
-                        </div>
+    <header class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="dropdown">
+                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Menu
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button id="homeBtn" class="dropdown-item" type="button">Home</button>
+                        <button class="dropdown-item" type="button">Movies</button>
+                        <button id="login" class="dropdown-item" type="button">Sign In</button>
+                        <button id="signUp" class="dropdown-item" type="button">Sign Up</button>
+                        <button id="signOutBtn" class="dropdown-item" type="button">Sign Out</button>
+                        <button id="favoriteBtn" class="dropdown-item" type="button">Favorites</button>
+
                     </div>
-                <div class = "col-md-3 wolf">
+                </div>
+                <div class="col-md-3 wolf">
 
                     <div id="wolfIcon"></div>
                 </div>
                 <div class="col-md-5">
                     <h1>Where Watch</h1>
                 </div>
-                <h2 id="userName"></h2>
+
             </div>
         </div>
     </header>
+
 
     <!-- Existing User Signin -->
 
@@ -120,6 +128,8 @@
             </div>
         </div>
     </form><br>
+    <!-- Favorites Modal-->
+    <div id="favorites"></div>
 
     <!-- Search Results Populate Here -->
 
@@ -131,7 +141,7 @@
 
     <footer>
         <P>UNC coding bootcamp project 1 Charles, Sarah, Wes, Amy</P>
-    </footer>        
+    </footer>
 
     <!-- End Document -->
 </body>

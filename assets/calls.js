@@ -53,10 +53,14 @@ $(".searchbtn").click(function(event){
         var movieImage = $('<img>', {class: 'movie-image', src:moviePosters, 'data-imdbid': imdbID});
         /* var movieRating = omdbResults.Rated.toUpperCase();  
         var moviePlot = omdbResults.Plot;
-        var movieRatingBtn = $('<button>', {type:'button', class:'btn btn-primary btn-sm', text:'RATED: '+movieRating}); */
-        var fav = $('<img>', {class:'fav', src:'assets/images/heart-icon.png', 'data-imdbid': imdbID});
-        /* $('#renderResults').prepend(displayDiv2.prepend(moviePlot)); */
-        $('#renderResults').prepend(displayDiv1.prepend(movieImage, fav));}
+        */
+
+        var fav = $('<img>', {class:'fav', src:'assets/images/heart-icon.png'}).attr('data-src', moviePosters); 
+        fav.attr('data-rating', movieRating);
+        fav.attr('data-plot', moviePlot);
+
+        $('#renderResults').prepend(displayDiv1.prepend(movieImage)); 
+        $('#renderResults').append(fav);
 
     });
 
