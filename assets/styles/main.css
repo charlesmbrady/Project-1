@@ -108,6 +108,7 @@ footer {
     border-color: hsl(0, 0%, 5%);
     overflow: scroll;
     margin-bottom: 100px;
+    box-shadow: 20px 20px 20px black;
 }
 
 

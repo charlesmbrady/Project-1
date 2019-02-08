@@ -75,7 +75,7 @@ $("#search-button").click(function (event) {
     var id = $(this).parent().attr("data-imdbid");
     console.log("working");
     var cors = 'https://cors-anywhere.herokuapp.com/'
-    var gbQueryURL = cors+"https://api-public.guidebox.com/v2/movies/"+ id + "/sources" +gbApiKey;  //cors + "https://api-public.guidebox.com/v2/movies/movie_id=" + id + gbApiKey;
+    var gbQueryURL = "http://api-public.guidebox.com/v2/search"+ gbApiKey + "&type=movie&field=id&query=tt0848228";
   
   $.ajax({
     url: gbQueryURL,
@@ -83,7 +83,7 @@ $("#search-button").click(function (event) {
   }).then(function(gbResponse){
     
     var gbResults = gbResponse.results;
-    console.log(gbResults);
+    console.log(gbResponse);
     if (gbResults == '') {$("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp. :(").appendTo('#results-display')};
     /*for (var i = 0; i < gbResults.length; i++) {
       var displayDiv = $("<div class='col-md-4'>");  
