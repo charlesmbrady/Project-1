@@ -101,6 +101,9 @@ footer {
     border: 1px solid transparent;
     border-radius: 4px;
     border-color: hsl(0, 0%, 5%);
+    height:300px;
+    width: 175px;
+    display:relative
 }
 
 #renderResults {
@@ -110,6 +113,13 @@ footer {
     border-radius: 4px;
     border-color: hsl(0, 0%, 5%);
 }
+
+
+.package {
+    display:inline-block;
+    margin: 5px;
+    border: 1px solid blue;
+    position: relative;
 
 /*Fav icon styling*/
 .fav {
@@ -132,4 +142,4 @@ footer {
     background-color: white;
     height:100px;
     width:100px;
-}
+  }
