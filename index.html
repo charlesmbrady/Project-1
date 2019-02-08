@@ -27,10 +27,12 @@
     <!-- Modularized JavaScript -->
     <script type="text/javascript" src="assets/main.js" defer></script>
     <script type="text/javascript" src="assets/calls.js" defer></script>
-</head>
 
-<body class="bg-image">
+    <!-- wicked css -->
+    <link rel="stylesheet" href="assets/styles/wickedcss.min.css">
+</head>   
 
+<body class = "bg-image">
     <!-- Header and Navigation -->
     <header class = "jumbotron jumbotron-fluid">
         <div class = "container">
@@ -41,21 +43,21 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                             <button id="homeBtn" class="dropdown-item" type="button">Home</button>
-                            <button class="dropdown-item" type="button">Movies</button>
                             <button id= "login" class="dropdown-item" type="button">Sign In</button>
                             <button id= "signUp" class="dropdown-item" type="button">Sign Up</button>
                             <button id= "signOutBtn" class="dropdown-item" type="button">Sign Out</button>
                             <button class="dropdown-item" type="button">Favorites</button>
                         </div>
                     </div>
-                <div class = "col-md-3 wolf">
-
-                    <div id="wolfIcon"></div>
+                <div class = "col-md-3" >
+                    <div id= "wolfIcon"></div>
                 </div>
                 <div class="col-md-5">
-                    <h1>Where Watch</h1>
+                    <h1 class = "slideDown">Where Watch</h1>
                 </div>
-                <h2 id="userName"></h2>
+                <div class = "col-md-3">
+                    <div id="displayName"></div>
+                </div>
             </div>
         </div>
     </header>
@@ -136,6 +138,7 @@
     <!-- Page Footer -->
     <footer>
         <P>UNC coding bootcamp project 1 Charles, Sarah, Wes, Amy</P>
+        <p>Wolf Icons from <a><href src = "https://svgsilh.com/">svgsilh.comS</href></a></p>
     </footer>        
 
 
