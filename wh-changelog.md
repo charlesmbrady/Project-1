@@ -1,11 +1,22 @@
+02-07-2019
+
+JavaScript:
+    calls.js:
+        Switched search type to search by keyword instead of by title to return entirety of results for movies that might have the same or similar names.
+        Stored relevant imdbID data from search in data attribute for each movie poster.
+CSS:
+    main.css:
+        Adjusted rendering of fav icon to be proportionate to rendered posters.
+        Adjust
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
 02-06-2019
 
 PROJECT-1:
     Created wh-changelog.md to detail changes personally made by me, date said changes were made and approximate time pushed.
-
-    TODO: 
-        Further modularize JavaScript code to separate between GuideBox, OMDB calls and returns.
-        Separate OMDB API calls once API key received for movie poster API calls.
 
 index.html:
     Cleaned index.html indentation and formatting for ease of reading. 
