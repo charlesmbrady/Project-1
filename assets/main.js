@@ -97,7 +97,6 @@
     var userName= $('#userNameInput').val();
     var email = $('#emailInput2').val();
     var password = $('#passwordInput2').val();  
-    console.log("clicked")
     if (email.length < 4) {
       $('.alert').text('Please enter a valid email address.');
       return;
@@ -129,38 +128,27 @@
 $('#passwordReset').on('click', function(e) {
   e.preventDefault();
   var email = $('#emailInput3').val();
-  // [START sendpasswordemail]
   firebase.auth().sendPasswordResetEmail(email).then(function() {
-    // Password Reset Email Sent!
-    // [START_EXCLUDE]
     $('.alert').text('Password Reset Email Sent!');
-    // [END_EXCLUDE]
   }).catch(function(error) {
-    // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    // [START_EXCLUDE]
     if (errorCode == 'auth/invalid-email') {
       $('.alert').text(errorMessage);
     } else if (errorCode == 'auth/user-not-found') {
       $('.alert').text(errorMessage);
     }
     console.log(error);
-    // [END_EXCLUDE]
   });
   $('#searchContainer').css('display', 'block');
   $('#passResetForm').css('display', 'none');
-  // [END sendpasswordemail];
 });
 
 $(document).on('click', '.fav', function(){
-  console.log('click');
-  //var title= $(this).attr('data-title');
   var poster= $(this).attr('data-src');
   var plot =$(this).attr('data-plot');
   var rating = $(this).attr('data-rating');
   database.ref("/favorites").push({
-    //title: title,
     poster: poster,
     plot: plot,
     rating:rating
@@ -168,9 +156,6 @@ $(document).on('click', '.fav', function(){
 });
 
 
-//function initApp() {
-  // Listening for auth state changes.
-  // [START authstatelistener]
   firebase.auth().onAuthStateChanged(function(user) {
     var user = firebase.auth().currentUser;
     if (user) {
@@ -188,13 +173,9 @@ $(document).on('click', '.fav', function(){
       database.ref('/userName').on('child_added', function(snapshot){
         var snap = snapshot.val();
         console.log(snap);
+        $('#displayName').text(snap.userName)
       })
-      // User is signed in.
-      var displayName = user.displayName;
-      var email = user.email;
-      var uid = user.uid;
-      var providerData = user.providerData;
-      // [START_EXCLUDE]
+  
     $('#login').on('click', function(){
       $('.alert').text("You're already signed in!");
     })
@@ -211,12 +192,9 @@ $(document).on('click', '.fav', function(){
         $('#passResetForm').css('display', 'none');
         $('#signUpForm').css('display', 'none');
       });
-      // [END_EXCLUDE]
+      
     } else {
       $('.alert').text("");
-      // User is signed out.
-      // [START_EXCLUDE]
       $('#sign-in').css('display', 'block');
       $('#sign-out').css('display', 'none');
-      // [END_EXCLUDE]
     }});
