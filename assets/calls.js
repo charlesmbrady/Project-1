@@ -56,8 +56,8 @@ $(".searchbtn").click(function (event) {
         var fav = $('<img>', { class: 'fav', src: 'assets/images/heart-icon.png' }).attr('data-src', moviePosters);
         
 
-        $('#renderResults').prepend(displayDiv1.prepend(movieImage));
-        $('#renderResults').append(fav);
+        $(displayDiv1).append(movieImage, fav);
+        $('#renderResults').append(displayDiv1);
 
       }
     });
