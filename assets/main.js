@@ -1,141 +1,123 @@
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyCdgaw55sm3H8fFFhWQde3hBthNVCtfFTs",
+  authDomain: "streamingproject1.firebaseapp.com",
+  databaseURL: "https://streamingproject1.firebaseio.com",
+  projectId: "streamingproject1",
+  storageBucket: "streamingproject1.appspot.com",
+  messagingSenderId: "507353543186"
+};
+firebase.initializeApp(config);
+var database = firebase.database();
 
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCdgaw55sm3H8fFFhWQde3hBthNVCtfFTs",
-    authDomain: "streamingproject1.firebaseapp.com",
-    databaseURL: "https://streamingproject1.firebaseio.com",
-    projectId: "streamingproject1",
-    storageBucket: "streamingproject1.appspot.com",
-    messagingSenderId: "507353543186"
+//First render Display blank
+renderAllBlank();
 
-  };
-  firebase.initializeApp(config);
-  var database = firebase.database();
-  
-  $('#signUp').on('click',function(e){
-    e.preventDefault();
-    $('#searchContainer').css('display', 'none');
-    $('#signInForm').css('display', 'none');
-    $('#passResetForm').css('display', 'none');
-    $('#favorites').css('display', 'none');
-    $('#signUpForm').css('display', 'block');
-  });
-  $('#login').on('click',function(e){
-    e.preventDefault();
-    $('#searchContainer').css('display', 'none');
-    $('#passResetForm').css('display', 'none');
-    $('#signUpForm').css('display', 'none');
-    $('#favorites').css('display', 'none');
-    $('#signInForm').css('display', 'block');
-  });
-  $('#go2PasswordReset').on('click',function(e){
-    e.preventDefault();
-    $('#signInForm').css('display', 'none');
-    $('#searchContainer').css('display', 'none');
-    $('#signUpForm').css('display', 'none');
-    $('#favorites').css('display', 'none');
-    $('#passResetForm').css('display', 'block');
-  });
-  
-  $('#homeBtn').on('click',function(){
-    $('#signInForm').css('display', 'none');
-    $('#signUpForm').css('display', 'none');
-    $('#passResetForm').css('display', 'none');
-    $('#favorites').css('display', 'none');
-    $('#searchContainer').css('display', 'block');
-  })
-  $('#favoriteBtn').on('click',function(e){
-    e.preventDefault();
-    $('#searchContainer').css('display', 'none');
-    $('#passResetForm').css('display', 'none');
-    $('#signUpForm').css('display', 'none');
-    $('#signInForm').css('display', 'none');
-    $('#favorites').css('display', 'block');
-  });
-  //You can then get the user's basic profile information from the User object. 
-  
-  $('#sign-in').on('click',function(e) {
-    e.preventDefault();
-    if (firebase.auth().currentUser) {
-      // [START signout]
-      firebase.auth().signOut();
-      // [END signout]
-    } else {
-      var email = $('#emailInput1').val();
-      var password = $('#passwordInput1').val();
-      if (email.length < 4) {
-        $('.alert').text('Please enter an email address.');
-        return;
-      }
-      if (password.length < 4) {
-        $('.alert').text('Please enter a password.');
-        return;
-      }
-      $('#searchContainer').css('display','block');
-      $('#signInForm').css('display', 'none');
-      firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        if (errorCode === 'auth/wrong-password') {
-          $('.alert').text('Wrong password.');
-          $('#searchContainer').css('display','none');
-          $('#signInForm').css('display', 'block');
-        } else {
-          $('.alert').text(errorMessage);
-          $('#searchContainer').css('display','none');
-          $('#signInForm').css('display', 'block');
-        }
-        console.log(error);
-      });
-    }
+//////////////////////////  Event Listeners ///////////////////////////////
+            //////////////////  Menu Buttons  /////////////////////
+            $('#home-menu').on('click', function () {
+              showSearchForm();
+            });
+            $('#signin-menu').on('click', function () {
+              showSigninForm();
+            });
+            $('#signup-menu').on('click', function () {
+              showSignupForm();
+            });
+            $('#favorites-menu').on('click', function () {
+              showFavorites();
+            });
+            ////////////////////////////////////////////////////////
 
-  });
+$('#go2PasswordReset').on('click', function () {
+  showPassResetForm();
+});
 
-  $('#sign-up').on("click", function(e) {
-    e.preventDefault();
-    var userName= $('#userNameInput').val();
-    var email = $('#emailInput2').val();
-    var password = $('#passwordInput2').val();  
+//You can then get the user's basic profile information from the User object. 
+
+$('#signout-menu').on('click', function (e) {
+  e.preventDefault();
+  if (firebase.auth().currentUser) {
+    // [START signout]
+    firebase.auth().signOut();
+    // [END signout]
+  } else {
+    var email = $('#emailInput1').val();
+    var password = $('#passwordInput1').val();
+    //input validations/////////////
     if (email.length < 4) {
-      $('.alert').text('Please enter a valid email address.');
+      $('.alert').text('Please enter an email address.');
       return;
     }
     if (password.length < 4) {
-      $('.alert').text('Password must be at least 6 characters.');
+      $('.alert').text('Please enter a password.');
       return;
     }
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    //////////////////////////////
+    showSearchForm();
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode === 'auth/wrong-password') {
+        $('.alert').text('Wrong password.');
+        $('#search-form').css('display', 'none');
+        $('#signin-form').css('display', 'block');
+      } else {
+        $('.alert').text(errorMessage);
+        $('#search-form').css('display', 'none');
+        $('#signin-form').css('display', 'block');
+      }
+      console.log(error);
+    });
+  }
+
+});
+
+$('#signin-button').on("click", function (e) {
+  e.preventDefault();
+  var userName = $('#userNameInput').val();
+  var email = $('#emailInput2').val();
+  var password = $('#passwordInput2').val();
+  if (email.length < 4) {
+    $('.alert').text('Please enter a valid email address.');
+    return;
+  }
+  if (password.length < 4) {
+    $('.alert').text('Password must be at least 6 characters.');
+    return;
+  }
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
     // Handle Errors here.
-    $('#searchContainer').css('display', 'block');
-    $('#signUpForm').css('display', 'none');
+    $('#search-form').css('display', 'block');
+    $('#signup-form').css('display', 'none');
     var errorCode = error.code;
     var errorMessage = error.message;
     if (errorCode == 'auth/weak-password') {
       $('.alert').text('The password is too weak.');
-      $('#searchContainer').css('display', 'none');
-      $('#signUpForm').css('display', 'block');
+      $('#search-form').css('display', 'none');
+      $('#signup-form').css('display', 'block');
     } else {
       $('.alert').text(errorMessage);
-      $('#searchContainer').css('display', 'none');
-      $('#signUpForm').css('display', 'block');
+      $('#search-form').css('display', 'none');
+      $('#signup-form').css('display', 'block');
     }
     console.log(error);
     // [END_EXCLUDE]
   });
   database.ref('/userName').push().set({
-    userName:userName
+    userName: userName
   });
   // [END createwithemail]
 
 });
 
-$('#passwordReset').on('click', function(e) {
+$('#passwordReset').on('click', function (e) {
   e.preventDefault();
   var email = $('#emailInput3').val();
-  firebase.auth().sendPasswordResetEmail(email).then(function() {
+  firebase.auth().sendPasswordResetEmail(email).then(function () {
     $('.alert').text('Password Reset Email Sent!');
-  }).catch(function(error) {
+  }).catch(function (error) {
     var errorCode = error.code;
     var errorMessage = error.message;
     if (errorCode == 'auth/invalid-email') {
@@ -145,63 +127,98 @@ $('#passwordReset').on('click', function(e) {
     }
     console.log(error);
   });
-  $('#searchContainer').css('display', 'block');
-  $('#passResetForm').css('display', 'none');
+  $('#search-form').css('display', 'block');
+  $('#reset-form').css('display', 'none');
 });
 
-$(document).on('click', '.fav', function(){
-  var poster= $(this).attr('data-src');
-  var plot =$(this).attr('data-plot');
-  var rating = $(this).attr('data-rating');
+$(document).on('click', '.fav', function () {
+  var poster = $(this).attr('data-src');
+  var id = $(this).parent().attr("data-imdbID");
   database.ref("/favorites").push({
     poster: poster,
-    plot: plot,
-    rating:rating
+    id: id
   });
 });
 
 
 
-  firebase.auth().onAuthStateChanged(function(user) {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      
-      database.ref("/favorites").on('child_added', function(snapshot){
-        var snap = snapshot.val();
-        console.log(snap);
-        console.log('working');
-        var poster= $('<img>').attr('src', snap.poster);
-        var plot =$('<p>').text(snap.plot);
-        var rating= snap.rating;
-        $('#favorites').append(poster);
-        $('#favorites').append(plot);
-        $('#favorites').append(rating);
-      });
-      database.ref('/userName').on('child_added', function(snapshot){
-        var snap = snapshot.val();
-        console.log(snap);
-        $('#displayName').text(snap.userName)
-      })
-  
-    $('#login').on('click', function(){
+firebase.auth().onAuthStateChanged(function (user) {
+  var user = firebase.auth().currentUser;
+  if (user) {
+
+    database.ref("/favorites").on('child_added', function (snapshot) {
+      var snap = snapshot.val();
+      console.log(snap);
+      var poster = $('<img>').attr('src', snap.poster);
+      var plot = $('<p>').text(snap.plot);
+      var rating = snap.rating;
+      $('#favorites').append(poster);
+      $('#favorites').append(plot);
+      $('#favorites').append(rating);
+    });
+    database.ref('/userName').on('child_added', function (snapshot) {
+      var snap = snapshot.val();
+      console.log(snap);
+      $('#displayName').text(snap.userName);
+    });
+
+    $('#signin-menu').on('click', function () {
       $('.alert').text("You're already signed in!");
-    })
-      $('#signOutBtn').on('click', function(e){
-        e.preventDefault();
-        console.log('click');
-        firebase.auth().signOut().then(function() {
-          console.log('Signed Out');
-        }, function(error) {
-          console.error('Sign Out Error', error);
-        });
-        $('#searchContainer').css('display', 'block');
-        $('#signInForm').css('display', 'none');
-        $('#passResetForm').css('display', 'none');
-        $('#signUpForm').css('display', 'none');
+    });
+
+    $('#signout-menu').on('click', function () {
+
+      firebase.auth().signOut().then(function () {
+        console.log('Signed Out');
+      }, function (error) {
+        console.error('Sign Out Error', error);
       });
-      
-    } else {
-      $('.alert').text("");
-      $('#sign-in').css('display', 'block');
-      $('#sign-out').css('display', 'none');
-    }});
+
+      showSearchForm();
+    });
+
+  } else {
+    $('.alert').text("");
+    showSearchForm();
+  }
+});
+
+
+
+
+
+
+
+
+
+/////////////////////// Display Functions /////////////////////////
+
+function renderAllBlank() {       //Blanks out display, use before showing the current "page"
+  $('#signin-form').css('display', 'none');
+  $('#signup-form').css('display', 'none');
+  $('#reset-form').css('display', 'none');
+  $('#search-form').css('display', 'none');
+  $('#favorites').css('display', 'none');
+  $('#search-results').css('display', 'none');
+  $('#results-display').css('display', 'none');
+}
+function showSigninForm() {
+  renderAllBlank();
+  $('#signin-form').css('display', 'block');
+}
+function showSignupForm() {
+  renderAllBlank();
+  $('#signup-form').css('display', 'block');
+}
+function showFavorites() {
+  renderAllBlank();
+  $('#favorites').css('display', 'block');
+}
+function showSearchForm() {
+  renderAllBlank();
+  $('#search-form').css('display', 'block');
+}
+function showPassResetForm() {
+  renderAllBlank();
+  $('#reset-form').css('display', 'block');
+}
