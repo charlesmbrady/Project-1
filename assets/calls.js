@@ -74,9 +74,12 @@ $("#search-button").click(function (event) {
     var id = $(this).parent().attr("data-imdbid");
     console.log("working");
     var cors = 'https://cors-anywhere.herokuapp.com/'
-    var gbQueryURL = cors + "https://api-public.guidebox.com/v2/movies/movie_id=" + id + gbApiKey;
+    var gbQueryURL = cors+"https://api-public.guidebox.com/v2/movies/"+ id + "/sources" +gbApiKey;  //cors + "https://api-public.guidebox.com/v2/movies/movie_id=" + id + gbApiKey;
   
-  $.get(gbQueryURL).done(function(gbResponse){
+  $.ajax({
+    url: gbQueryURL,
+    method: 'GET'
+  }).then(function(gbResponse){
     
     var gbResults = gbResponse.results;
     console.log(gbResults);
