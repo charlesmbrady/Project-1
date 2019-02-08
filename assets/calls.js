@@ -29,7 +29,7 @@ $("#search-button").click(function (event) {
         var imdbID = omdbResults[i].imdbID;
         var posterSrc = omdbResults[i].Poster;
 
-        var package = $("<div class='package'>").attr("data-imdbID", imdbID);
+        var package = $("<div class='package animated flipInY'>").attr("data-imdbID", imdbID);
         var streamSearch = $('<div class= "streamSearch">').text("?");
         var poster = $('<img>', { class: 'movie-image', src: posterSrc });
         var fav = $('<img>', { class: 'fav', src: 'assets/images/heart-icon.png' }).attr('data-src', posterSrc);
@@ -37,6 +37,7 @@ $("#search-button").click(function (event) {
 
         $(package).append(poster, fav, details, streamSearch);
         $('#results-display').append(package);
+        
       }
     });
 });
