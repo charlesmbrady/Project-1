@@ -107,12 +107,18 @@
     }
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
+    $('#searchContainer').css('display', 'block');
+    $('#signUpForm').css('display', 'none');
     var errorCode = error.code;
     var errorMessage = error.message;
     if (errorCode == 'auth/weak-password') {
       $('.alert').text('The password is too weak.');
+      $('#searchContainer').css('display', 'none');
+      $('#signUpForm').css('display', 'block');
     } else {
       $('.alert').text(errorMessage);
+      $('#searchContainer').css('display', 'none');
+      $('#signUpForm').css('display', 'block');
     }
     console.log(error);
     // [END_EXCLUDE]
@@ -121,8 +127,7 @@
     userName:userName
   });
   // [END createwithemail]
-  $('#searchContainer').css('display', 'block');
-  $('#signUpForm').css('display', 'none');
+
 });
 
 $('#passwordReset').on('click', function(e) {
@@ -156,9 +161,11 @@ $(document).on('click', '.fav', function(){
 });
 
 
+
   firebase.auth().onAuthStateChanged(function(user) {
     var user = firebase.auth().currentUser;
     if (user) {
+      
       database.ref("/favorites").on('child_added', function(snapshot){
         var snap = snapshot.val();
         console.log(snap);

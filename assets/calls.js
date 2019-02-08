@@ -59,11 +59,14 @@ $(".searchbtn").click(function (event) {
         $('#renderResults').prepend(displayDiv1.prepend(movieImage));
         $('#renderResults').append(fav);
 
+
       }
     });
 
   // End Search-on-Click function:
 });
+
+
 
 
   /* Commenting out no longer used uTelly code/ajax calls:  
