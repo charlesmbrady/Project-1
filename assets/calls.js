@@ -6,13 +6,9 @@ $("#search-button").click(function (event) {
   event.preventDefault();
   $("#results-display").css('display', 'block');
   $("#results-display").text("");
-  var omdbType = "";
-  var year = "";
-
   
   var searchInput = $("#search-input").val().trim();
-  var omdbQueryURL = 'https://www.omdbapi.com/?s=' + searchInput + '&type=' + omdbType + "&y=" + year + "&plot=full" + omdbApiKey;
-  
+  var omdbQueryURL = 'https://www.omdbapi.com/?s=' + searchInput + omdbApiKey;
 
 
   // OMDB API AJAX call:
@@ -33,7 +29,7 @@ $("#search-button").click(function (event) {
         var streamSearch = $('<div class= "streamSearch">').text("?");
         var poster = $('<img>', { class: 'movie-image', src: posterSrc });
         var fav = $('<img>', { class: 'fav', src: 'assets/images/heart-icon.png' }).attr('data-src', posterSrc);
-        var details = $("<h6>").addClass("details").attr("type", "button").attr("data-toggle", "modal").attr("data-target", "#exampleModal").attr("data-imdbIDbID", imdbID).text("details");
+        var details = $("<h6>").addClass("details").attr("type", "button").attr("data-toggle", "modal").attr("data-target", "#exampleModal").text("details");
 
         $(package).append(poster, fav, details, streamSearch);
         $('#results-display').append(package);
@@ -74,8 +70,10 @@ $("#search-button").click(function (event) {
   $("#results-display").on("click", ".streamSearch", function(){
     var id = $(this).parent().attr("data-imdbid");
     console.log("working");
-    var cors = 'https://cors-anywhere.herokuapp.com/'
-    var gbQueryURL = "http://api-public.guidebox.com/v2/search"+ gbApiKey + "&type=movie&field=id&query=tt0848228";
+
+    //Show title: Arrow , IMDB id = tt2193021   GB id = 13015
+    var cors = 'https://cors-anywhere.herokuapp.com/';
+    var gbQueryURL = "http://api-public.guidebox.com/v2/movies/13015/sources" + gbApiKey;
   
   $.ajax({
     url: gbQueryURL,
