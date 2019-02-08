@@ -125,3 +125,6 @@ footer {
     opacity: 1;
     cursor: pointer;
 }
+#favorites{
+    display: none;
+}

@@ -17,6 +17,7 @@
     $('#searchContainer').css('display', 'none');
     $('#signInForm').css('display', 'none');
     $('#passResetForm').css('display', 'none');
+    $('#favorites').css('display', 'none');
     $('#signUpForm').css('display', 'block');
   });
   $('#login').on('click',function(e){
@@ -24,6 +25,7 @@
     $('#searchContainer').css('display', 'none');
     $('#passResetForm').css('display', 'none');
     $('#signUpForm').css('display', 'none');
+    $('#favorites').css('display', 'none');
     $('#signInForm').css('display', 'block');
   });
   $('#go2PasswordReset').on('click',function(e){
@@ -31,6 +33,7 @@
     $('#signInForm').css('display', 'none');
     $('#searchContainer').css('display', 'none');
     $('#signUpForm').css('display', 'none');
+    $('#favorites').css('display', 'none');
     $('#passResetForm').css('display', 'block');
   });
   
@@ -38,9 +41,17 @@
     $('#signInForm').css('display', 'none');
     $('#signUpForm').css('display', 'none');
     $('#passResetForm').css('display', 'none');
+    $('#favorites').css('display', 'none');
     $('#searchContainer').css('display', 'block');
   })
-  
+  $('#favoriteBtn').on('click',function(e){
+    e.preventDefault();
+    $('#searchContainer').css('display', 'none');
+    $('#passResetForm').css('display', 'none');
+    $('#signUpForm').css('display', 'none');
+    $('#signInForm').css('display', 'none');
+    $('#favorites').css('display', 'block');
+  });
   //You can then get the user's basic profile information from the User object. 
   
   $('#sign-in').on('click',function(e) {
@@ -60,25 +71,30 @@
         $('.alert').text('Please enter a password.');
         return;
       }
-  
+      $('#searchContainer').css('display','block');
+      $('#signInForm').css('display', 'none');
       firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         if (errorCode === 'auth/wrong-password') {
           $('.alert').text('Wrong password.');
+          $('#searchContainer').css('display','none');
+          $('#signInForm').css('display', 'block');
         } else {
           $('.alert').text(errorMessage);
+          $('#searchContainer').css('display','none');
+          $('#signInForm').css('display', 'block');
         }
         console.log(error);
       });
     }
-    $('#searchContainer').css('display','block');
-    $('#signInForm').css('display', 'none');
+
   });
 
   $('#sign-up').on("click", function(e) {
     e.preventDefault();
+    var userName= $('#userNameInput').val();
     var email = $('#emailInput2').val();
     var password = $('#passwordInput2').val();  
     console.log("clicked")
@@ -101,6 +117,9 @@
     }
     console.log(error);
     // [END_EXCLUDE]
+  });
+  database.ref('/userName').push().set({
+    userName:userName
   });
   // [END createwithemail]
   $('#searchContainer').css('display', 'block');
@@ -134,22 +153,42 @@ $('#passwordReset').on('click', function(e) {
   // [END sendpasswordemail];
 });
 
+$(document).on('click', '.fav', function(){
+  console.log('click');
+  //var title= $(this).attr('data-title');
+  var poster= $(this).attr('data-src');
+  var plot =$(this).attr('data-plot');
+  var rating = $(this).attr('data-rating');
+  database.ref("/favorites").push({
+    //title: title,
+    poster: poster,
+    plot: plot,
+    rating:rating
+  });
+});
+
+
 //function initApp() {
   // Listening for auth state changes.
   // [START authstatelistener]
   firebase.auth().onAuthStateChanged(function(user) {
     var user = firebase.auth().currentUser;
     if (user) {
- 
-      user.updateProfile({
-        displayName: "Jane Q. User",
-        photoURL: "https://example.com/jane-q-user/profile.jpg"
-      }).then(function() {
-        console.log(displayName);
-        // Update successful.
-      }).catch(function(error) {
-        // An error happened.
+      database.ref("/favorites").on('child_added', function(snapshot){
+        var snap = snapshot.val();
+        console.log(snap);
+        console.log('working');
+        var poster= $('<img>').attr('src', snap.poster);
+        var plot =$('<p>').text(snap.plot);
+        var rating= snap.rating;
+        $('#favorites').append(poster);
+        $('#favorites').append(plot);
+        $('#favorites').append(rating);
       });
+      database.ref('/userName').on('child_added', function(snapshot){
+        var snap = snapshot.val();
+        console.log(snap);
+      })
       // User is signed in.
       var displayName = user.displayName;
       var email = user.email;
