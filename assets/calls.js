@@ -8,7 +8,7 @@ $(".searchbtn").click(function(event){
     var gbApiKey= "?api_key=1da49a76dc5aff961a13224d42119be60f600160";
     var cors = 'https://cors-anywhere.herokuapp.com/'
     var searchInput=$(".searchShows").val().trim();
-    var omdbQueryURL = 'https://www.omdbapi.com/?t='+searchInput+'&type='+omdbType+"&y="+year+"&plot=full"+omdbApiKey;
+    var omdbQueryURL = 'https://www.omdbapi.com/?s='+searchInput+'&type='+omdbType+"&y="+year+"&plot=full"+omdbApiKey;
     var omdbPosterURL = 'https://img.omdbapi.com/?t='+searchInput+omdbApiKey;
     var gbQueryURL= cors+"https://api-public.guidebox.com/v2/search"+gbApiKey+"&type=movie&field=title&query="+searchInput;
     
@@ -31,33 +31,37 @@ $(".searchbtn").click(function(event){
         }
     });*/
     
-    console.log('---------------------------------------------------------');
+    // console.log('---------------------------------------------------------');
 
     // OMDB API AJAX call:
     $.get(omdbQueryURL)
     /*$.get(omdbPosterURL)*/
     .done(function(omdbResponse) {
         $('.searchShows').val('');
-        console.log('---------------------------------------------------------');
+        console.log('-----------------------------------------------');
         console.log(omdbResponse);
-        console.log('---------------------------------------------------------');
+        console.log('-----------------------------------------------');
         /* console.log(omdbResponse2);
         console.log('---------------------------------------------------------'); */
-        var omdbResults = omdbResponse;
+        var omdbResults = omdbResponse.Search;
         if (omdbResults == '') {$("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp. :(").appendTo('#renderResults')};
-        var displayDiv1 = $("<div class='col-md-4'>");
-        var displayDiv2 = $("<div class='col-md-4'>");
-        var moviePosters = omdbResults.Poster;
-        var movieImage = $('<img>', {class: 'movie-image', src:moviePosters});
-        var movieRating = omdbResults.Rated.toUpperCase();
+        for (var i = 0; i < omdbResults.length; i++){
+        var imdbID = omdbResults[i].imdbID
+        var displayDiv1 = $("<div class='package'>");
+        /* var displayDiv2 = $("<div class='col-md-4'>"); */ 
+        var moviePosters = omdbResults[i].Poster;
+        var movieImage = $('<img>', {class: 'movie-image', src:moviePosters, 'data-imdbid': imdbID});
+        /* var movieRating = omdbResults.Rated.toUpperCase();  
         var moviePlot = omdbResults.Plot;
-        var movieRatingBtn = $('<button>', {type:'button', class:'btn btn-primary btn-sm', text:'RATED: '+movieRating});
+        */
+
         var fav = $('<img>', {class:'fav', src:'assets/images/heart-icon.png'}).attr('data-src', moviePosters); 
         fav.attr('data-rating', movieRating);
         fav.attr('data-plot', moviePlot);
-        $('#renderResults').prepend(displayDiv2.prepend(moviePlot));
+
         $('#renderResults').prepend(displayDiv1.prepend(movieImage)); 
         $('#renderResults').append(fav);
+
     });
 
 // End Search-on-Click function:
