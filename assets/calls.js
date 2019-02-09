@@ -132,12 +132,12 @@ function checkSources(src) {
 // Function to render logo display based on source being unavailable:
 
 function fadeServiceIcons() {
-  $("#netflix").css("opacity", ".5");
-  $("#hbo").css("opacity", ".5");
-  $("#hulu").css("opacity", ".5");
-  $("#primevideo").css("opacity", ".5");
-  $("#youtube").css("opacity", ".5");
-  $("#itunes").css("opacity", ".5");
-  $("#vudu").css("opacity", ".5");
-  $("#googleplay").css("opacity", ".5");
+  $("#netflix").css("opacity", ".2");
+  $("#hbo").css("opacity", ".2");
+  $("#hulu").css("opacity", ".2");
+  $("#primevideo").css("opacity", ".2");
+  $("#youtube").css("opacity", ".2");
+  $("#itunes").css("opacity", ".2");
+  $("#vudu").css("opacity", ".2");
+  $("#googleplay").css("opacity", ".2");
 }

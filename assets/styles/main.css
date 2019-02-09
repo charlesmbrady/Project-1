@@ -226,54 +226,54 @@ footer {
     background-image: url(../images/servicelogos/hbonow.png);
     background-repeat: none;
     background-size: contain;
-    opacity: .5;
+    opacity: .2;
 }
 
 #hulu {
     background-image: url(../images/servicelogos/hulu.jpg);
     background-repeat: none;
     background-size: contain;
-    opacity: .5;
+    opacity: .2;
 }
 
 #netflix {
     background-image: url(../images/servicelogos/netflix.jpg);
     background-repeat: none;
     background-size: contain;
-    opacity: .5;
+    opacity: .2;
 }
 
 #primevideo {
     background-image: url(../images/servicelogos/primevideo.jpg);
     background-repeat: none;
     background-size: contain;
-    opacity: .5;
+    opacity: .2;
 }
 
 #youtube {
     background-image: url(../images/servicelogos/youtube.jpg);
     background-repeat: none;
     background-size: cover;
-    opacity: .5;
+    opacity: .2;
 }
 
 #vudu {
     background-image: url(../images/servicelogos/vudu.jpg);
     background-repeat: none;
     background-size: cover;
-    opacity: .5;
+    opacity: .2;
 }
 
 #itunes {
     background-image: url(../images/servicelogos/itunes.jpg);
     background-repeat: none;
     background-size: cover;
-    opacity: .5;
+    opacity: .2;
 }
 
 #googleplay {
     background-image: url(../images/servicelogos/googleplay.jpg);
     background-repeat: none;
     background-size: cover;
-    opacity: .5;
+    opacity: .2;
 }
