@@ -195,3 +195,15 @@ footer {
     background: black;
     opacity: .8;
 }
+#favAlert{
+    display: none;
+    padding: 40px;
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: solid 1.5px #18a999;
+    background-color: #f7f0f0;
+    border-radius: 60px/40px;
+}
