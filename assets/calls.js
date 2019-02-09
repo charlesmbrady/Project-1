@@ -9,7 +9,7 @@ var sourceType = $('#source-type');
 $("#search-button").click(function (event) {
   event.preventDefault();
   $("#results-display").css('display', 'block');
-  $("#results-display").remove(".package");
+  $("#results-display").text("");
   var searchInput = $("#search-input").val().trim();
   var typeO; if (searchType.hasClass('movies')) {var typeO='&type=movie'} else {var typeO='&type=series'};
   var omdbQueryURL = 'https://www.omdbapi.com/?s='+searchInput+typeO+omdbApiKey;
