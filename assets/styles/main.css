@@ -51,6 +51,7 @@ h1 {
     color: #f7f0f0;
     outline-color: #18a999;
 }
+
 #userName{
     background: white;
     height:50px;
@@ -143,3 +144,5 @@ footer {
     height:100px;
     width:100px;
   }
+
+  
