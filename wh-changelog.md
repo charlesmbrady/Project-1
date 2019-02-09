@@ -1,3 +1,13 @@
+02-08-2019
+
+PowerPoint:
+    Completed Google Slides presentation, fixed formatting in slides, beautified presentation. 
+    Condensed presentation from 30 total slides to 12 to accommodate an 8 - 10 minute presentation time.
+    Added hard copy of PowerPoint to GitHub file.
+    Created editable share link for PowerPoint. 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
 02-07-2019
 
 JavaScript:
@@ -7,9 +17,6 @@ JavaScript:
 CSS:
     main.css:
         Adjusted rendering of fav icon to be proportionate to rendered posters.
-        Adjust
-
-
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
