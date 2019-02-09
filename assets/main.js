@@ -199,6 +199,7 @@ function renderAllBlank() {       //Blanks out display, use before showing the c
   $('#favAlert').css('display', 'none');
   $('.alert').empty();
   $('#streaming-services').css('display', 'none');
+  
 
 }
 function showSigninForm() {
