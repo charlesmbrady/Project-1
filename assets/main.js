@@ -198,6 +198,8 @@ function renderAllBlank() {       //Blanks out display, use before showing the c
   $('#results-display').css('display', 'none');
   $('#favAlert').css('display', 'none');
   $('.alert').empty();
+  $('#streaming-services').css('display', 'none');
+
 }
 function showSigninForm() {
   renderAllBlank();
@@ -210,10 +212,12 @@ function showSignupForm() {
 function showFavorites() {
   renderAllBlank();
   $('#favorites').css('display', 'block');
+  $('#streaming-services').css('display', 'block');
 }
 function showSearchForm() {
   renderAllBlank();
   $('#search-form').css('display', 'block');
+  $('#streaming-services').css('display', 'block');
 }
 function showPassResetForm() {
   renderAllBlank();
