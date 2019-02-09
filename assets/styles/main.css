@@ -249,7 +249,7 @@ footer {
 }
 
 #primevideo {
-    background-image: url(../images/servicelogos/primevideo.png);
+    background-image: url(../images/servicelogos/primevideo.jpg);
     background-repeat: none;
     background-size: contain;
     opacity: .5;
@@ -257,6 +257,27 @@ footer {
 
 #youtube {
     background-image: url(../images/servicelogos/youtube.jpg);
+    background-repeat: none;
+    background-size: cover;
+    opacity: .5;
+}
+
+#vudu {
+    background-image: url(../images/servicelogos/vudu.jpg);
+    background-repeat: none;
+    background-size: cover;
+    opacity: .5;
+}
+
+#itunes {
+    background-image: url(../images/servicelogos/itunes.jpg);
+    background-repeat: none;
+    background-size: cover;
+    opacity: .5;
+}
+
+#googleplay {
+    background-image: url(../images/servicelogos/googleplay.jpg);
     background-repeat: none;
     background-size: cover;
     opacity: .5;
