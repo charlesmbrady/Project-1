@@ -73,8 +73,7 @@ $('#signout-menu').on('click', function (e) {
   }
 
 });
-
-$('#signin-button').on("click", function (e) {
+$('#signup-button').on('click', function(e){
   e.preventDefault();
   var userName = $('#userNameInput').val();
   var email = $('#emailInput2').val();
@@ -108,8 +107,28 @@ $('#signin-button').on("click", function (e) {
   database.ref('/userName').push().set({
     userName: userName
   });
-  // [END createwithemail]
-
+})
+$('#signin-button').on("click", function (e) {
+  e.preventDefault();
+  var email = $('#emailInput1').val();
+  var password = $('#passwordInput1').val();
+  if (email.length < 4) {
+    $('.alert').text('Please enter a valid email address.');
+    return;
+  }
+  if (password.length < 4) {
+    $('.alert').text('Password must be at least 6 characters.');
+    return;
+  }
+  
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Handle Errors here.
+  
+    var errorMessage = error.message;
+    $('.alert').text(errorMessage);
+    // ...
+  });
+  
 });
 
 $('#passwordReset').on('click', function (e) {
@@ -150,11 +169,7 @@ firebase.auth().onAuthStateChanged(function (user) {
       var snap = snapshot.val();
       console.log(snap);
       var poster = $('<img>').attr('src', snap.poster);
-      var plot = $('<p>').text(snap.plot);
-      var rating = snap.rating;
       $('#favorites').append(poster);
-      $('#favorites').append(plot);
-      $('#favorites').append(rating);
     });
     database.ref('/userName').on('child_added', function (snapshot) {
       var snap = snapshot.val();
@@ -170,6 +185,8 @@ firebase.auth().onAuthStateChanged(function (user) {
 
       firebase.auth().signOut().then(function () {
         console.log('Signed Out');
+        $('.alert').empty();
+        //remove user name from firebase
       }, function (error) {
         console.error('Sign Out Error', error);
       });
