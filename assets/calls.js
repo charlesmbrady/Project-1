@@ -6,7 +6,7 @@ $("#search-button").click(function (event) {
   event.preventDefault();
   $("#results-display").css('display', 'block');
   $("#results-display").text("");
-  
+
   var searchInput = $("#search-input").val().trim();
   var omdbQueryURL = 'https://www.omdbapi.com/?s=' + searchInput + omdbApiKey;
 
@@ -17,7 +17,7 @@ $("#search-button").click(function (event) {
       $('#search-input').val('');
 
       var omdbResults = omdbResponse.Search;
-      if (omdbResults == '') { 
+      if (omdbResults == '') {
         $("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp.").appendTo('#results-display');
         return 0;
       }
@@ -33,31 +33,31 @@ $("#search-button").click(function (event) {
 
         $(package).append(poster, fav, details, streamSearch);
         $('#results-display').append(package);
-        
+
       }
     });
 });
 
 
 //click handler for pulling in more details
-    $(document).on("click", ".details", function () {
-      $("#details").text("");
-      var id = $(this).parent().attr("data-imdbID");
-      var omdbDetailsURL = "http://www.omdbapi.com/?i=" + id + "&plot=full" + omdbApiKey;
+$(document).on("click", ".details", function () {
+  $("#details").text("");
+  var id = $(this).parent().attr("data-imdbID");
+  var omdbDetailsURL = "http://www.omdbapi.com/?i=" + id + "&plot=full" + omdbApiKey;
 
-      $.get(omdbDetailsURL)
-        .done(function (response) {
+  $.get(omdbDetailsURL)
+    .done(function (response) {
 
-          console.log(response);
+      console.log(response);
 
-          var title = $("<p>").text(response.Title);
-          var rating = $("<p>").text("Rated: " + response.Rated);
-          var plot = $("<p>").text(response.Plot);
+      var title = $("<p>").text(response.Title);
+      var rating = $("<p>").text("Rated: " + response.Rated);
+      var plot = $("<p>").text(response.Plot);
 
-          $("#details").append(title, rating, plot);
+      $("#details").append(title, rating, plot);
 
-        });
     });
+});
 
 
 
@@ -67,31 +67,36 @@ $("#search-button").click(function (event) {
 
 
 // GuideBox API AJAX call:
-  $("#results-display").on("click", ".streamSearch", function(){
-    var id = $(this).parent().attr("data-imdbid");
-    console.log("working");
+$("#results-display").on("click", ".streamSearch", function () {
+  var id = $(this).parent().attr("data-imdbID");
+  console.log("working");
+  var guideboxId;
 
-    //Show title: Arrow , IMDB id = tt2193021   GB id = 13015
-    var cors = 'https://cors-anywhere.herokuapp.com/';
-    var gbQueryURL = "http://api-public.guidebox.com/v2/movies/13015/sources" + gbApiKey;
-  
+  //TESTING EXAMPLE: Show title: Arrow , IMDB id = tt2193021   GB id = 13015
+  //var gbQueryURL = "http://api-public.guidebox.com/v2/movies/13015/sources" + gbApiKey;
+  var gbQueryURLimdb = "http://api-public.guidebox.com/v2/search" + gbApiKey + "&type=movie&field=id&id_type=imdb&query=" + id;
+  //TODO: if the gbResponseID is undefined, it's because the clicked poster is actually related to a show instead of a movie, need to accomodate this...
+  var gbQueryURLfinal = "http://api-public.guidebox.com/v2/movies/" + guideboxId + "/sources" + gbApiKey + "&type=subscription";
+
+  //first guidebox call to get the guidebox movie/show id (needed to get sources)
   $.ajax({
-    url: gbQueryURL,
+    url: gbQueryURLimdb,
     method: 'GET'
-  }).then(function(gbResponse){
-    
-    var gbResults = gbResponse.results;
+  }).then(function (gbResponse) {
     console.log(gbResponse);
-    if (gbResults == '') {$("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp. :(").appendTo('#results-display')};
-    /*for (var i = 0; i < gbResults.length; i++) {
-      var displayDiv = $("<div class='col-md-4'>");  
-      var posterSrc = [gbResults[i].poster_240x342, gbResults[i].poster_120x171, gbResults[i].poster_400x570];
-      var movieRating = gbResults[i].rating.toUpperCase();
-      console.log('This is the movie rating: '+movieRating);
-      var movieRatingBtn = $('<button>', {type:'button', class:'btn btn-primary btn-sm', text:'RATED: '+movieRating});
-      var poster = $('<img>', {class: 'movie-image', src:posterSrc[0]});
-      var fav = $('<img>', {class:'fav', src:'https://www.freeiconspng.com/uploads/heart-icon-14.png'});
-      $('#results-display').append(displayDiv.append(poster, movieRatingBtn, fav))
-      }*/
+    guideboxId = gbResponse.id;
+    console.log("heres the id " + guideboxId);
+    if (gbResponse.results == '') {
+      $("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp. :(").appendTo('#results-display')
+    };
+  });
+
+  //second guidebox call to get the sources using the guidebox id
+  $.ajax({
+    url: gbQueryURLfinal,
+    method: 'GET'
+  }).then(function (gbResponse) {
+    console.log(gbResponse);
+    
   });
 });
