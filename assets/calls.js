@@ -72,34 +72,36 @@ $("#results-display").on("click", ".streamSearch", function () {
   var id = $(this).parent().attr("data-imdbID");
   console.log("working");
   console.log(id);
-  var guideboxId= "";
+  var guideboxId;
 
   //TESTING EXAMPLE: Show title: Arrow , IMDB id = tt2193021   GB id = 13015
   //var gbQueryURL = "http://api-public.guidebox.com/v2/movies/13015/sources" + gbApiKey;
-  //var gbQueryURLimdb = "http://api-public.guidebox.com/v2/search" + gbApiKey + "&type=movie&field=id&id_type=imdb&query=" +id;
+  var gbQueryURLimdb = "http://api-public.guidebox.com/v2/search" + gbApiKey + "&type=movie&field=id&id_type=imdb&query=" +id;
   //TODO: if the gbResponseID is undefined, it's because the clicked poster is actually related to a show instead of a movie, need to accomodate this...
-  var gbQueryURLfinal = "https://api-public.guidebox.com/v2/movies/19249"+gbApiKey+"&sources=subscription" ;
-
+  
+  
+  
   //first guidebox call to get the guidebox movie/show id (needed to get sources)
-  // $.ajax({
-  //  url: gbQueryURLimdb,
-  //  method: 'GET'
-  // }).then(function (gbResponse) {
-  //    console.log(gbResponse);
-  //    guideboxId = gbResponse.id;
-  //    console.log("heres the id " + guideboxId);
-  //   if (gbResponse.results == '') {
-  //     $("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp. :(").appendTo('#results-display')
-  //    };
-  //  });
-  //  console.log(guideboxId);
-  //second guidebox call to get the sources using the guidebox id
-  $.ajax({
-    url: gbQueryURLfinal,
+   $.ajax({
+    url: gbQueryURLimdb,
     method: 'GET'
-  }).then(function (gbResponse) {
+   }).then(function (gbResponse) {
     console.log(gbResponse);
-    
-  });
+    guideboxId = gbResponse.id;
+    console.log("heres the id " + guideboxId);
+   if (gbResponse.results == '') {
+    $("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp. :(").appendTo('#results-display')
+    };
+    console.log(guideboxId)
+    console.log(gbApiKey)
+    var gbQueryURLfinal = "https://api-public.guidebox.com/v2/movies/"+guideboxId+gbApiKey+"&sources=subscription" ;
+    $.ajax({
+     url: gbQueryURLfinal,
+     method: 'GET'
+     }).then(function (gbResponse) {
+     console.log(gbResponse);
+   });
+   });
+  //second guidebox call to get the sources using the guidebox id
 
 });
