@@ -12,6 +12,7 @@ var database = firebase.database();
 
 //First render Display blank
 renderAllBlank();
+showSearchForm();
 
 //////////////////////////  Event Listeners ///////////////////////////////
             //////////////////  Menu Buttons  /////////////////////
