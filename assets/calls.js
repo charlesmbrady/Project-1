@@ -21,7 +21,7 @@ $('#search-type').on('click', function changeSearchType (event){
 $("#search-button").click(function (event) {
   event.preventDefault();
   $("#results-display").css('display', 'block');
-  $("#results-display").text("");
+  $("#results-display").remove(".package");
   var searchInput = $("#search-input").val().trim();
   var omdbQueryURL = 'https://www.omdbapi.com/?s=' + searchInput + omdbApiKey;
   // OMDB API AJAX call:

@@ -213,6 +213,7 @@ function showSignupForm() {
 function showFavorites() {
   renderAllBlank();
   $('#favorites').css('display', 'block');
+  $("#results-display").css("display", 'block');
   $('#streaming-services').css('display', 'block');
 }
 function showSearchForm() {
