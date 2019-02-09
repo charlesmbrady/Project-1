@@ -138,12 +138,6 @@ footer {
     cursor: pointer;
 }
 
-#displayName {
-    background-color: white;
-    height:100px;
-    width:100px;
-}
-
 .details {
     position: absolute;
     height: 40px;
