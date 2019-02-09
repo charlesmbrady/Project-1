@@ -75,9 +75,11 @@ $("#results-display").on("click", ".streamSearch", function () {
   //TESTING EXAMPLE: Show title: Arrow , IMDB id = tt2193021   GB id = 13015
   //var gbQueryURL = "http://api-public.guidebox.com/v2/movies/13015/sources" + gbApiKey;
   var gbQueryURLimdb = "http://api-public.guidebox.com/v2/search" + gbApiKey + "&type=movie&field=id&id_type=imdb&query=" + id;
-  //TODO: if the gbResponseID is undefined, it's because the clicked poster is actually related to a show instead of a movie, need to accomodate this...
-  var gbQueryURLfinal = "http://api-public.guidebox.com/v2/movies/" + guideboxId + "/sources" + gbApiKey + "&type=subscription";
+  
 
+  //v2/movies/{movie_id}/videos?sources=guidebox
+  var gbQueryURLfinal = "http://api-public.guidebox.com/v2/movies/" + guideboxId + "/" + gbApiKey + "?sources=amazon_prime";
+  
   //first guidebox call to get the guidebox movie/show id (needed to get sources)
   $.ajax({
     url: gbQueryURLimdb,
@@ -89,14 +91,16 @@ $("#results-display").on("click", ".streamSearch", function () {
     if (gbResponse.results == '') {
       $("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp. :(").appendTo('#results-display')
     };
+
+    //second guidebox call to get the sources using the guidebox id
+    $.ajax({
+      url: gbQueryURLfinal,
+      method: 'GET'
+    }).then(function (response) {
+      console.log(response);
+
+    });
   });
 
-  //second guidebox call to get the sources using the guidebox id
-  $.ajax({
-    url: gbQueryURLfinal,
-    method: 'GET'
-  }).then(function (gbResponse) {
-    console.log(gbResponse);
-    
-  });
+
 });
