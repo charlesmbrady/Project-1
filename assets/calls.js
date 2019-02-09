@@ -69,6 +69,7 @@ $("#results-display").on("click", ".streamSearch", function () {
   console.log("working");
   console.log(id);
   var guideboxId;
+  var showguideboxId;
   var type; if (searchType.hasClass('movie')) {var type='movies'} else {var type='shows'};
   //TESTING EXAMPLE: Show title: Arrow , IMDB id = tt2193021   GB id = 13015
   //var gbQueryURL = "http://api-public.guidebox.com/v2/movies/13015/sources" + gbApiKey;
@@ -100,9 +101,37 @@ $("#results-display").on("click", ".streamSearch", function () {
      gbResponse.subscription_web_sources.forEach(checkSources);
    });
    });
+   
+   //for shows
+   var gbQueryURLimdb = "http://api-public.guidebox.com/v2/search" + gbApiKey + "&type=show&field=id&id_type=imdb&query=" +id;
+  
+  $.ajax({
+    url: gbQueryURLimdb,
+    method: 'GET'
+   }).then(function (gbResponse) {
+    console.log(gbResponse);
+   showguideboxId = gbResponse.id;
+   console.log("heres the id " + showguideboxId);
+  if (gbResponse.results == '') {
+    $("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp. :(").appendTo('#results-display')
+    };
+
+     console.log(showguideboxId)
+     console.log(gbApiKey)
+    var gbQueryURLfinal = "https://api-public.guidebox.com/v2/shows/"+showguideboxId+"seasons"+gbApiKey+"&sources=subscription" ;
+     $.ajax({
+      url: gbQueryURLfinal,
+      method: 'GET'
+      }).then(function (gbResponse) {
+      console.log(gbResponse);
+    });
+    });
   //second guidebox call to get the sources using the guidebox id
 
 });
+  //second guidebox call to get the sources using the guidebox id
+
+
 
 
 // Sets default text and search type for togglable button:
