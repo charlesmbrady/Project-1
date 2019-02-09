@@ -65,6 +65,7 @@ $(document).on("click", ".details", function () {
 // GuideBox API AJAX call:
 $("#results-display").on("click", ".streamSearch", function () {
   var id = $(this).parent().attr("data-imdbID");
+  fadeServiceIcons();
   console.log("working");
   console.log(id);
   var guideboxId;
@@ -95,6 +96,8 @@ $("#results-display").on("click", ".streamSearch", function () {
      method: 'GET'
      }).then(function (gbResponse) {
      console.log(gbResponse);
+     console.log(gbResponse.subscription_web_sources);
+     gbResponse.subscription_web_sources.forEach(checkSources);
    });
    });
   //second guidebox call to get the sources using the guidebox id
@@ -104,3 +107,31 @@ $("#results-display").on("click", ".streamSearch", function () {
 
 // Sets default text and search type for togglable button:
 $('#search-type').text('Currently Searching By Movies');
+
+
+function checkSources(src) {
+  if(src.source.includes("netflix")) {
+    $("#netflix").css("opacity", "1");
+  }
+  if(src.source.includes("hbo")) {
+    $("#hbo").css("opacity", "1");
+  }
+  if(src.source.includes("hulu")) {
+    $("#hulu").css("opacity", "1");
+  }
+  if(src.source.includes("youtube")) {
+    $("#youtube").css("opacity", "1");
+  }
+  if(src.source.includes("amazon_prime")) {
+    $("#primevideo").css("opacity", "1");
+  }
+
+}
+
+function fadeServiceIcons() {
+  $("#netflix").css("opacity", ".5");
+  $("#hbo").css("opacity", ".5");
+  $("#hulu").css("opacity", ".5");
+  $("#primevideo").css("opacity", ".5");
+  $("#youtube").css("opacity", ".5");
+}
