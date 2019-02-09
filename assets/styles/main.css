@@ -206,8 +206,12 @@ footer {
     border: solid 1.5px #18a999;
     background-color: #f7f0f0;
     border-radius: 60px/40px;
+}
+#search-input {
+    text-align:center;
+}
 
-
+}
 
 /********** Streaming Services Bar ************/
 #streaming-services {
