@@ -151,6 +151,8 @@ firebase.auth().onAuthStateChanged(function (user) {
     });
     $('#favorites-menu').on('click', function(e){
       e.preventDefault();
+      $('#favorites').css('display', 'block');
+      $('#results-display').css('display', 'none');
       $('#favAlert').css('display', 'none');
     });
     //if no user signed in
