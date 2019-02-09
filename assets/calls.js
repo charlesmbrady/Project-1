@@ -21,7 +21,7 @@ $('#search-type').on('click', function changeSearchType (event){
 $("#search-button").click(function (event) {
   event.preventDefault();
   $("#results-display").css('display', 'block');
-  $("#results-display").remove(".package");
+  $("#results-display").text("");
   var searchInput = $("#search-input").val().trim();
   var omdbQueryURL = 'https://www.omdbapi.com/?s=' + searchInput + omdbApiKey;
   // OMDB API AJAX call:
@@ -66,8 +66,7 @@ $(document).on("click", ".details", function () {
 $("#results-display").on("click", ".streamSearch", function () {
   var id = $(this).parent().attr("data-imdbID");
   fadeServiceIcons();
-  console.log("working");
-  console.log(id);
+  
   var guideboxId;
   var showguideboxId;
   var type; if (searchType.hasClass('movie')) {var type='movies'} else {var type='shows'};
@@ -82,15 +81,14 @@ $("#results-display").on("click", ".streamSearch", function () {
     url: gbQueryURLimdb,
     method: 'GET'
    }).then(function (gbResponse) {
-    console.log(gbResponse);
+   
     guideboxId = gbResponse.id;
-    console.log("heres the id " + guideboxId);
+  
    if (gbResponse.results == '') {
     $("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp. :(").appendTo('#results-display')
     };
 
-    console.log(guideboxId)
-    console.log(gbApiKey)
+ 
     var gbQueryURLfinal = "https://api-public.guidebox.com/v2/movies/"+guideboxId+gbApiKey+"&sources=subscription" ;
     $.ajax({
      url: gbQueryURLfinal,
@@ -109,15 +107,14 @@ $("#results-display").on("click", ".streamSearch", function () {
     url: gbQueryURLimdb,
     method: 'GET'
    }).then(function (gbResponse) {
-    console.log(gbResponse);
+    
    showguideboxId = gbResponse.id;
    console.log("heres the id " + showguideboxId);
   if (gbResponse.results == '') {
     $("<div class='col-md-12'>").text("There isn't a result for this search. Womp womp. :(").appendTo('#results-display')
     };
 
-     console.log(showguideboxId)
-     console.log(gbApiKey)
+    
     var gbQueryURLfinal = "https://api-public.guidebox.com/v2/shows/"+showguideboxId+"seasons"+gbApiKey+"&sources=subscription" ;
      $.ajax({
       url: gbQueryURLfinal,

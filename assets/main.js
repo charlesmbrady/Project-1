@@ -10,8 +10,9 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
-//First render Display blank
+//First render Display blank and show search form
 renderAllBlank();
+showSearchForm();
 
 //////////////////////////  Event Listeners ///////////////////////////////
             //////////////////  Menu Buttons  /////////////////////
@@ -167,6 +168,9 @@ firebase.auth().onAuthStateChanged(function (user) {
 
   //sign out user 
 $('#signout-menu').on('click', function () {
+  $("#favorites").empty();
+
+
   if (firebase.auth().currentUser) {
     firebase.auth().signOut().then(function () {
     console.log('Signed Out');
@@ -215,6 +219,8 @@ function showFavorites() {
   $('#favorites').css('display', 'block');
   $("#results-display").css("display", 'block');
   $('#streaming-services').css('display', 'block');
+  $("#results-display").remove(".package");
+  
 }
 function showSearchForm() {
   renderAllBlank();
